@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartagena Bachelor Bash: The Ultimate Send-Off</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for a more "grown & sexy" feel */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text */
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #fbd38d; /* Gold accent for headings */
+        }
+        .hero-background {
+            background-image: url('https://res.cloudinary.com/dnmluw4fs/image/upload/v1753559083/DEV09501_copy_iebxf8.jpg'); /* Your groom's photo */
+            background-size: cover;
+            background-position: top center; /* Changed to top center to show face */
+            background-attachment: fixed; /* Parallax effect */
+        }
+        ._xlzko7 {
+            width: auto !important;
+        }
+        .gradient-overlay {
+            background: linear-gradient(to bottom, rgba(26, 32, 44, 0.7), rgba(26, 32, 44, 0.9));
+        }
+        .card {
+            background-color: #2d3748; /* Slightly lighter dark for cards */
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+        }
+        .btn-primary {
+            background-color: #fbd38d; /* Gold button */
+            color: #1a202c; /* Dark text on gold */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #ecc94b; /* Lighter gold on hover */
+            transform: translateY(-2px);
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #fbd38d;
+            border-radius: 5px;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fbd38d;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Fixed Countdown Timer Styles */
+        #countdown-timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(45, 55, 72, 0.9); /* Darker background with transparency */
+            color: #fbd38d; /* Gold text */
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+            font-size: 1.1rem;
+            font-weight: 600;
+            z-index: 1000; /* Ensure it stays on top */
+            text-align: center;
+            min-width: 180px; /* Ensure enough space */
+        }
+        #countdown-timer span {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #e2e8f0; /* Lighter text for labels */
+        }
+
+        @media (max-width: 768px) {
+            #countdown-timer {
+                top: 10px;
+                right: 10px;
+                padding: 0.75rem 1rem;
+                font-size: 1rem;
+                min-width: unset;
+            }
+        }
+        /* Airbnb Embed Frame adjustments for responsiveness */
+        .airbnb-embed-frame {
+            max-width: 100%; /* Ensure it doesn't overflow on small screens */
+            display: block; /* Ensures margin: auto works */
+            margin: auto; /* Center the embed */
+        }
+        /* Style for clickable highlight cards */
+        .highlight-card-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #2d3748;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none; /* Remove underline from link */
+            color: inherit; /* Inherit text color */
+        }
+        .highlight-card-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.4), 0 6px 10px -3px rgba(0, 0, 0, 0.2);
+        }
+        .highlight-card-link img {
+            border-radius: 50%;
+            width: 8rem; /* w-32 */
+            height: 8rem; /* h-32 */
+            object-fit: cover;
+            margin-bottom: 1rem; /* mb-4 */
+            border: 4px solid #fbd38d;
+        }
+        .highlight-card-link h3 {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            margin-bottom: 0.5rem; /* mb-2 */
+            color: #fbd38d; /* Ensure heading color is gold */
+        }
+        .highlight-card-link p {
+            color: #a0aec0; /* text-gray-400 */
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            max-width: 700px; /* Default max width for larger screens */
+            width: 100%; /* Take full width on smaller screens */
+            margin: auto;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            height: 400px; /* Fixed height for consistency, adjust as needed */
+        }
+
+        .carousel-images {
+            display: flex;
+            height: 100%; /* Occupy full height of container */
+            transition: transform 0.5s ease-in-out;
+            /* Remove fixed width here, let flex items define it */
+        }
+
+        .carousel-images img,
+        .carousel-images video {
+            flex: 0 0 100%; /* Each media item takes exactly 100% of the parent's width */
+            /* Removed width: 100% here as flex: 0 0 100% handles it */
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fbd38d;
+            border: none;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: 300px; /* Smaller height for mobile */
+            }
+            
+            /* Hide carousel buttons on mobile */
+            .carousel-button {
+                display: none;
+            }
+        }
+
+        /* Carousel Dots/Indicators */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1rem;
+            padding: 0 1rem;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(251, 211, 141, 0.3); /* Gold with transparency */
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background-color: #fbd38d; /* Full gold for active */
+            transform: scale(1.2);
+        }
+
+        .carousel-dot:hover {
+            background-color: rgba(251, 211, 141, 0.6);
+        }
+
+        /* Hide dots on desktop, show arrows */
+        @media (min-width: 769px) {
+            .carousel-dots {
+                display: none;
+            }
+        }
+
+        /* Show dots on mobile, hide arrows */
+        @media (max-width: 768px) {
+            .carousel-dots {
+                display: flex;
+            }
+        }
+
+        /* Back to Top Button Styles */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #fbd38d; /* Gold background */
+            color: #1a202c; /* Dark text */
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #back-to-top:hover {
+            background-color: #ecc94b; /* Lighter gold on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            #back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Countdown Timer -->
+    <div id="countdown-timer">
+        <div id="time-display"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero-background relative h-screen flex items-center justify-center text-center text-white">
+        <div class="gradient-overlay absolute inset-0"></div>
+        <div class="relative z-10 p-4 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4 drop-shadow-lg">
+                The Ultimate Send-Off: <br> Cartagena Bachelor Bash
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 font-light drop-shadow-md">
+                Celebrating Devin's Last Ride in Style
+            </p>
+            <a href="#details" class="btn-primary inline-block px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl">
+                Discover the Journey
+            </a>
+        </div>
+    </header>
+
+    <!-- Details Section -->
+    <section id="details" class="py-16 bg-gray-900 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 section-title">The Grand Plan</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                <!-- Date Card -->
+                <div class="card p-4 md:p-6 flex flex-col items-center">
+                    <svg class="w-10 h-10 md:w-12 md:h-12 text-fbd38d mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-2">When</h3>
+                    <p class="text-base md:text-lg text-gray-400">August 13 - 17, 2025</p>
+                    <p class="text-sm md:text-base text-gray-500">(Arrival Wednesday, Departure Sunday)</p>
+                </div>
+
+                <!-- Location Card -->
+                <div class="card p-4 md:p-6 flex flex-col items-center">
+                    <svg class="w-10 h-10 md:w-12 md:h-12 text-fbd38d mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-2">Where</h3>
+                    <p class="text-base md:text-lg text-gray-400">Cartagena, Colombia</p>
+                    <p class="text-sm md:text-base text-gray-500">The Walled City & Beyond</p>
+                </div>
+
+                <!-- Vibe Card -->
+                <div class="card p-4 md:p-6 flex flex-col items-center">
+                    <svg class="w-10 h-10 md:w-12 md:h-12 text-fbd38d mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"></path></svg>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-2">The Vibe</h3>
+                    <p class="text-base md:text-lg text-gray-400">Grown, Sexy, Unforgettable</p>
+                    <p class="text-sm md:text-base text-gray-500">Luxury, Adventure & Brotherhood</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Highlights Section (Moved and elements made clickable) -->
+    <section id="itinerary-highlights" class="py-16 bg-gray-800 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 section-title">A Taste of What's to Come</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Highlight 1: Exclusive Villa Living (now clickable) -->
+                <a href="#accommodation" class="highlight-card-link">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Luxury+Villa" alt="Luxury Villa">
+                    <h3>Exclusive Villa Living</h3>
+                    <p>Indulge in a private, luxurious villa experience with all the amenities.</p>
+                </a>
+                <!-- Highlight 2: Private Yacht Excursion (now clickable) -->
+                <a href="#yacht-excursion" class="highlight-card-link">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Yacht+Party" alt="Yacht Party">
+                    <h3>Private Yacht Excursion</h3>
+                    <p>Sail the Caribbean waters, explore Rosario Islands, and party on deck.</p>
+                </a>
+                <!-- Highlight 3 -->
+                <div class="highlight-card-link">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Walled+City+Nights" alt="Walled City Nights">
+                    <h3>Walled City Nightlife</h3>
+                    <p>Experience the vibrant and exclusive nightlife within Cartagena's historic walls.</p>
+                </div>
+                <!-- Highlight 4 -->
+                <div class="highlight-card-link">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Fine+Dining" alt="Fine Dining">
+                    <h3>Gourmet Dining</h3>
+                    <p>Savor the exquisite flavors of Colombian cuisine at top-tier restaurants.</p>
+                </div>
+                <!-- Highlight 5: Daytime Adventures (now clickable) -->
+                <a href="#activity-poll" class="highlight-card-link">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Adventure" alt="Adventure">
+                    <h3>Daytime Adventures</h3>
+                    <p>From mud volcanoes to historic tours, take our poll to help us plan the perfect activities for everyone.</p>
+                </a>
+                <!-- Highlight 6 -->
+                <div class="highlight-card-link">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Brotherhood" alt="Brotherhood">
+                    <h3>Unforgettable Brotherhood</h3>
+                    <p>Create lasting memories with the groom and the crew.</p>
+                </div>
+                <!-- Highlight 7: Important Travel Information (now clickable) -->
+                <a href="#travel-info" class="highlight-card-link">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Travel+Info" alt="Travel Information">
+                    <h3>Important Travel Information</h3>
+                    <p>Essential details for customs, packing, and arrival logistics for your trip.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Villa Accommodation Section (now linked from highlights) -->
+    <section id="accommodation" class="py-16 bg-gray-900 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 section-title">Your Luxurious Villa</h2>
+            <div class="flex justify-center">
+                <div class="card p-6 max-w-2xl w-full text-left">
+                    <h3 class="text-xl font-semibold mb-4 text-center">Our Private Villa</h3>
+                    <p class="text-gray-400 mb-6 text-center">
+                        Get ready to unwind in style! We've secured an incredible 12-bedroom villa, perfect for our group.
+                        Check out the listing details below:
+                    </p>
+
+                    <!-- Villa Image Carousel -->
+                    <div class="carousel-container mt-8">
+                        <div class="carousel-images" id="villaCarouselImages">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/0ff5faa1-b168-4e06-afe7-49b4bcebb044.jpeg?im_w=960" alt="Villa Exterior">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/97cdc1d6-387e-469d-8a94-d418986eb57b.jpeg?im_w=1200" alt="Villa Interior">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/21d08738-38a8-4dfa-bee0-98201ff6163e.jpeg?im_w=1200" alt="Villa Living Area">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/3a189dfc-0f5f-4894-9008-aaea95cba044.jpeg?im_w=1200" alt="Villa Pool Area">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/cfb35add-7eda-4a8a-98fa-2c0941cfb35b.jpeg?im_w=1200" alt="Villa Bedroom">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/28ffba86-3cff-4e1e-bc41-24ae49ee8682.jpeg?im_w=1200" alt="Villa Kitchen">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/57c00cb4-cbe4-473a-b4f6-91664205bc25.jpeg?im_w=1200" alt="Villa Dining Area">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/c9049315-0c0c-4cc2-b1b9-9123d1ecedd7.jpeg?im_w=1200" alt="Villa Bathroom">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/c6db1460-c629-42a8-8219-725961bd47f2.jpeg?im_w=1200" alt="Villa Terrace">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/f978da62-1169-4247-9315-952126c6dd41.jpeg?im_w=1200" alt="Villa View">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/c9e0a490-1f42-45eb-92dd-a1eb3045613e.jpeg?im_w=1200" alt="Villa Balcony">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/58010b18-504f-4bbd-85d1-3f6144842958.jpeg?im_w=1200" alt="Villa Lounge">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/a979e259-d722-4b76-b2b9-2cb8909a742e.jpeg?im_w=1200" alt="Villa Garden">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/f1f1c6cb-7060-47f4-b0c0-9ef884985e90.jpeg?im_w=1200" alt="Villa Master Suite">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/8e74953e-4f45-44c5-a704-d0be80626135.jpeg?im_w=1200" alt="Villa Guest Room">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/1b4d3f54-5e40-4ec5-961b-0087abcfd312.jpeg?im_w=1200" alt="Villa En-suite">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/5dac63eb-57b1-4c56-8f35-b7a889257a72.jpeg?im_w=1200" alt="Villa Rooftop">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/57e3a4ab-aec4-40a5-8b7d-79d4e2c6c842.jpeg?im_w=1200" alt="Villa Common Area">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/649dcc52-99de-4e77-abd9-dd6aa231767c.jpeg?im_w=1200" alt="Villa Study">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/4bdec2af-a316-453d-ac30-f78cd505834c.jpeg?im_w=1200" alt="Villa Entertainment">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/89c10239-64de-4bb8-a5b8-5b764ac32d81.jpeg?im_w=1200" alt="Villa Workspace">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/f7bc8ff7-54b3-4494-b5db-03390cff885d.jpeg?im_w=1200" alt="Villa Hallway">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/c6a77b00-804b-4e2e-b85a-c0468b6b411e.jpeg?im_w=1200" alt="Villa Entrance">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/b0f3a319-da84-4fed-bad6-3bde01e179b9.jpeg?im_w=1200" alt="Villa Patio">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/fcfa030f-3173-4a53-b3ea-9c87a2042a4e.jpeg?im_w=1200" alt="Villa Double Room">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/7e18fca4-df8e-487e-8036-9b33d27fc80d.jpeg?im_w=1200" alt="Villa Twin Room">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/e382b4b3-ce23-4679-bfbb-86e29e49b2c7.jpeg?im_w=1200" alt="Villa Luxury Suite">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/94e5bb44-0bb8-4513-8c80-1fecb4a10602.jpeg?im_w=1200" alt="Villa Private Bath">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/d4b7d01f-a715-49f2-a0e3-79cda4f76df9.jpeg?im_w=1200" alt="Villa Shower">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/2895603f-93af-47fb-9681-6adee134622a.jpeg?im_w=1200" alt="Villa Vanity">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/e1f4fe92-d258-4075-b939-8708c372a332.jpeg?im_w=1200" alt="Villa Closet">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/644e4218-c980-4c93-a3e5-551922aaa091.jpeg?im_w=1200" alt="Villa Laundry">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/5a6a7e32-0d04-42ec-a24c-914ae34ba013.jpeg?im_w=1200" alt="Villa Storage">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/c5c0cf34-8264-4a0b-91ee-b60f497e03db.jpeg?im_w=1200" alt="Villa Courtyard">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/c76a2811-6d16-4ba3-8985-921e8cb466ba.jpeg?im_w=1200" alt="Villa Bar Area">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/62a6074e-7450-4f3c-9150-dd5622969448.jpeg?im_w=1200" alt="Villa Outdoor Dining">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/69994c5a-a592-43e0-bd46-b891d5729c4c.jpeg?im_w=1200" alt="Villa Pool Deck">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/8f5e7f8e-6fbe-4fe2-85f5-85853ac9bfc4.jpeg?im_w=1200" alt="Villa Lounge Chairs">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/08a16576-f268-4ec5-8ad6-8dbaaac3d9e6.jpeg?im_w=1200" alt="Villa Game Room">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1304668607572162965/original/84f53bee-9dde-4190-a5dd-67a0af8758ea.jpeg?im_w=1200" alt="Villa Recreation">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/c02252ee-0f7e-4e66-a763-8007ecf89dca.jpeg?im_w=1200" alt="Villa Outdoor Space">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/9ccde4bc-bd92-4d84-951b-962cb6969309.jpeg?im_w=1200" alt="Villa Night View">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/272ddbb8-4f92-40cb-9d08-13fb4ff74566.jpeg?im_w=1200" alt="Villa Lighting">
+                            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTMwNDY2ODYwNzU3MjE2Mjk2NQ%3D%3D/original/e1038da9-d6e2-4757-9407-8decf1297412.jpeg?im_w=1200" alt="Villa Architecture">
+                        </div>
+                        <button class="carousel-button prev" onclick="window.moveVillaSlide(-1)">&#10094;</button>
+                        <button class="carousel-button next" onclick="window.moveVillaSlide(1)">&#10095;</button>
+                    </div>
+                    <!-- Villa Carousel Dots -->
+                    <div class="carousel-dots" id="villaCarouselDots"></div>
+                    
+                    <div class="mt-6 text-center">
+                        <a href="https://www.airbnb.com/rooms/1304668607572162965?guests=1&adults=1&s=66&source=embed_widget" 
+                           target="_blank" 
+                           class="btn-primary inline-block px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl">
+                            View Full Listing on Airbnb
+                        </a>
+                        <p class="text-gray-400 text-sm mt-2">★5.0 · 12 bedrooms · 12 beds · 12 baths</p>
+                    </div>
+
+                    <ul class="list-disc list-inside text-gray-300 mb-6 space-y-2 mt-8">
+                        <li><strong>Spacious Luxury:</strong> The entire property spans over 12,000 sq ft and boasts 12 amazing bedrooms, ensuring comfort for everyone.</li>
+                        <li><strong>Dedicated Staff:</strong> The house comes equipped with its own staff, including a talented cook/cleaner and a dedicated butler to meet all of your needs, allowing you to truly relax and enjoy.</li>
+                    </ul>
+
+                    <h4 class="text-lg font-semibold mb-2 text-fbd38d">Directions to the Villa:</h4>
+                    <p class="text-gray-400 mb-4">
+                        <strong>Address:</strong> Calle 5A cr 6-119, Cartagena, Bolívar, Colombia
+                    </p>
+                    <p class="text-gray-400 mb-6">
+                        <strong>Uber/Taxi Instructions:</strong> Tell your driver to take you to "Calle Pinango cerca de Medi Help en Castillogrande."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Yacht Excursion Section -->
+    <section id="yacht-excursion" class="py-16 bg-gray-900 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 section-title">Your Private Yacht</h2>
+            <div class="flex justify-center">
+                <div class="card p-6 max-w-2xl w-full text-left">
+                    <h3 class="text-xl font-semibold mb-4 text-center">Set Sail in Style!</h3>
+                    <p class="text-gray-400 mb-6 text-center">
+                        Get ready for an incredible day on the water aboard our private yacht.
+                        Here are the details for your luxurious excursion:
+                    </p>
+
+                    <!-- Image Carousel -->
+                    <div class="carousel-container mt-8">
+                        <div class="carousel-images" id="yachtCarouselImages">
+                            <!-- Video added here -->
+                            <video src="https://res.cloudinary.com/dnmluw4fs/video/upload/v1753553186/VID-20250413-WA0000_uaq0ax.mp4" autoplay loop muted playsinline alt="Yacht Video"></video>
+                            <img src="https://res.cloudinary.com/dnmluw4fs/image/upload/v1753553427/IMG-20250413-WA0001_mplng3.jpg" alt="Yacht Interior 1">
+                            <img src="https://res.cloudinary.com/dnmluw4fs/image/upload/v1753553427/IMG-20250413-WA0002_f6lw8v.jpg" alt="Yacht Exterior 2">
+                            <img src="https://res.cloudinary.com/dnmluw4fs/image/upload/v1753553184/IMG-20250413-WA0009_rtndvq.jpg" alt="Yacht Exterior 1">
+                            <img src="https://res.cloudinary.com/dnmluw4fs/image/upload/v1753553430/IMG-20250413-WA0010_buakcg.jpg" alt="Yacht Deck">
+                            <img src="https://res.cloudinary.com/dnmluw4fs/image/upload/v1753553430/IMG-20250413-WA0008_guveoy.jpg" alt="Yacht View">
+                            <img src="https://res.cloudinary.com/dnmluw4fs/image/upload/v1753553428/IMG-20250413-WA0004_cfbo8f.jpg" alt="Yacht Bow">
+                            <img src="https://res.cloudinary.com/dnmluw4fs/image/upload/v1753553428/IMG-20250413-WA0003_xuyvlm.jpg" alt="Yacht Bow">
+                            <img src="https://res.cloudinary.com/dnmluw4fs/image/upload/v1753553429/IMG-20250413-WA0007_wy3fft.jpg" alt="Yacht Interior 2">
+                            <img src="https://res.cloudinary.com/dnmluw4fs/image/upload/v1753553428/IMG-20250413-WA0006_bjkd14.jpg" alt="Yacht Bow">
+                        </div>
+                        <button class="carousel-button prev" onclick="window.moveSlide(-1)">&#10094;</button>
+                        <button class="carousel-button next" onclick="window.moveSlide(1)">&#10095;</button>
+                    </div>
+                    <!-- Yacht Carousel Dots -->
+                    <div class="carousel-dots" id="yachtCarouselDots"></div>
+
+                    <ul class="list-disc list-inside text-gray-300 mb-6 space-y-2 mt-8">
+                        <li><strong>The Vessel:</strong> A spacious 51-foot private charter with a dedicated captain and two attentive deckhands.</li>
+                        <li><strong>Comfort Onboard:</strong> Boasting 4 comfortable bedrooms and 4 bathrooms for your convenience.</li>
+                        <li><strong>When:</strong> Saturday from 9:00 AM - 5:30 PM</li>
+                        <li><strong>Destination:</strong> We'll cruise to a fantastic beach club island, perfect for enjoying lunch, drinks, and a lively party atmosphere.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Travel Information Section -->
+    <section id="travel-info" class="py-16 bg-gray-800 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 section-title">Important Travel Information</h2>
+            <div class="flex justify-center">
+                <div class="card p-6 max-w-2xl w-full text-left">
+                    <h3 class="text-xl font-semibold mb-4 text-fbd38d">Customs & Entry</h3>
+                    <p class="text-gray-400 mb-4">
+                        <strong>Pre-fill Your Check-Mig Form:</strong> All travelers entering or exiting Colombia must fill out the Check-Mig form online within 72 hours prior to their flight. This is mandatory and helps streamline your entry process.
+                        You can find it on the Migración Colombia website. Fill it out before you depart!
+                    </p>
+
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Packing Essentials</h3>
+                    <ul class="list-disc list-inside text-gray-300 mb-6 space-y-2">
+                        <li><strong>Lightweight & Breathable Clothing:</strong> Cartagena is hot and humid! Pack linen, cotton, and other light fabrics.</li>
+                        <li><strong>Swimwear:</strong> For the villa pool, yacht, and beach clubs.</li>
+                        <li><strong>Sun Protection:</strong> Sunscreen (high SPF!), hats, sunglasses are crucial.</li>
+                        <li><strong>Comfortable Walking Shoes:</strong> For exploring the Walled City's cobblestone streets.</li>
+                        <li><strong>Dressy Casual Attire:</strong> For nightlife and nice dinners. Think stylish shorts/linen pants, collared shirts.</li>
+                        <li><strong>Bug Spray:</strong> Especially for evenings.</li>
+                        <li><strong>Portable Power Bank:</b> To keep your devices charged on the go.</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Arrivals & Transportation</h3>
+                    <p class="text-gray-400 mb-4">
+                        To help coordinate potential shuttle services from the airport to the villa, please send your flight arrival time and airline information directly to Leaveil. We'll do our best to group arrivals for smooth transfers.
+                    </p>
+
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Duty-Free Liquor Guidelines</h3>
+                    <p class="text-gray-400 mb-4">
+                        Each person is encouraged to pack or buy **two bottles of liquor at duty-free** upon arrival (or before departure from your home airport). This will significantly help stock the villa bar and save on local liquor costs.
+                    </p>
+                    <p class="text-gray-400 mb-6">
+                        <strong>What to Expect:</strong> Duty-free shops are usually located after security at your departure airport and upon arrival at Cartagena's Rafael Núñez International Airport (CTG). Prices are often lower than local stores. You'll need your boarding pass to purchase. Be aware of any specific Colombian customs limits, though two bottles per person are generally well within typical allowances for personal consumption.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activity Poll Section -->
+    <section id="activity-poll" class="py-16 bg-gray-900 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 section-title">Share Your Activity Preferences</h2>
+            <div class="flex justify-center">
+                <div class="card p-6 max-w-2xl w-full text-left">
+                    <h3 class="text-xl font-semibold mb-4 text-center text-fbd38d">Poll: Your Activity Preferences!</h3>
+                    <p class="text-gray-400 mb-6 text-center">
+                        Help us tailor the experience! Please select the types of activities you're most interested in for the trip.
+                    </p>
+                    <form id="activityPollForm" class="text-left">
+                        <div class="mb-4">
+                            <label for="participantName" class="block text-gray-300 text-sm font-bold mb-2">Your Name / Nickname:</label>
+                            <input type="text" id="participantName" class="shadow appearance-none border rounded w-full py-2 px-3 bg-gray-700 text-gray-200 leading-tight focus:outline-none focus:shadow-outline border-gray-600" placeholder="e.g., John, The Best Man" required>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-300 text-sm font-bold mb-2">What kind of activities excite you?</label>
+                            <div class="space-y-2">
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" name="activityType" value="Curious" class="form-checkbox h-5 w-5 text-fbd38d">
+                                    <span class="ml-2 text-gray-300">Curious (History, Culture, Tours)</span>
+                                </label><br>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" name="activityType" value="Foodies" class="form-checkbox h-5 w-5 text-fbd38d">
+                                    <span class="ml-2 text-gray-300">Foodies (Cooking, Tasting, Street Food)</span>
+                                </label><br>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" name="activityType" value="Pampered" class="form-checkbox h-5 w-5 text-fbd38d">
+                                    <span class="ml-2 text-gray-300">Pampered (Spa, Yoga, Personal Services)</span>
+                                </label><br>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" name="activityType" value="Adventures" class="form-checkbox h-5 w-5 text-fbd38d">
+                                    <span class="ml-2 text-gray-300">Adventures (ATV, Buggy, Paratrike)</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" id="submitPollBtn" class="btn-primary px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl flex items-center justify-center">
+                            Submit Preferences
+                            <span id="pollSpinner" class="loading-spinner hidden"></span>
+                        </button>
+                        <p id="pollMessage" class="mt-4 text-center text-green-400 hidden"></p>
+                    </form>
+
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d text-center">Live Poll Results</h3>
+                    <!-- Updated poll results display -->
+                    <div id="pollResultsDisplay" class="mt-4 p-4 bg-gray-700 rounded-lg w-full">
+                        <p class="text-gray-400 text-center">Loading poll results...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gemini API Features Section -->
+    <section id="gemini-features" class="py-16 bg-gray-800 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 section-title">Cartagena Insights & Fun</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-lg mx-auto">
+                <!-- Personalized Itinerary Suggestion - HIDDEN -->
+                <div class="card p-8 flex flex-col items-center text-center hidden">
+                    <h3 class="text-2xl font-semibold mb-4">✨ Personalized Itinerary Suggestion</h3>
+                    <p class="text-gray-400 mb-4">Tell us your preferred vibe for Cartagena, and we'll suggest some activities!</p>
+                    <input type="text" id="itineraryInput" placeholder="e.g., adventure, nightlife, relaxation, foodie" class="w-full p-3 mb-4 rounded-md bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:border-fbd38d">
+                    <button id="generateItineraryBtn" class="btn-primary px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl flex items-center justify-center">
+                        Generate Suggestions
+                        <span id="itinerarySpinner" class="loading-spinner hidden"></span>
+                    </button>
+                    <div id="itineraryOutput" class="mt-6 p-4 bg-gray-800 rounded-lg text-left text-gray-300 w-full hidden">
+                        <!-- Itinerary suggestions will be displayed here -->
+                    </div>
+                </div>
+
+                <!-- Cartagena Slang & Phrases -->
+                <div class="card p-8 flex flex-col items-center text-center">
+                    <h3 class="text-2xl font-semibold mb-4">✨ Cartagena Slang & Phrases</h3>
+                    <p class="text-gray-400 mb-4">Learn some cool local phrases to impress the locals!</p>
+                    <button id="generateSlangBtn" class="btn-primary px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl flex items-center justify-center">
+                        Get Phrases
+                        <span id="slangSpinner" class="loading-spinner hidden"></span>
+                    </button>
+                    <div id="slangOutput" class="mt-6 p-4 bg-gray-800 rounded-lg text-left text-gray-300 w-full hidden">
+                        <!-- Slang and phrases will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 py-8 text-center text-gray-500 text-sm mt-auto">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 [Brother's Name] Bachelor Party. All Rights Reserved.</p>
+            <p>Designed for an unforgettable experience.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to Top">↑</button>
+
+    <script type="module">
+        // Firebase Imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        // Firebase Initialization Variables (provided by Canvas environment)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
+
+        let app, db, auth, userId;
+        let isFirebaseReady = false;
+
+        // Initialize Firebase and set up auth listener
+        async function initializeFirebase() {
+            try {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                // Authenticate
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        console.log("Firebase Authenticated. User ID:", userId);
+                    } else {
+                        // For anonymous users, generate a unique ID
+                        userId = localStorage.getItem('anonUserId');
+                        if (!userId) {
+                            userId = 'anon-' + crypto.randomUUID();
+                            localStorage.setItem('anonUserId', userId);
+                        }
+                        console.log("Firebase Anonymous User ID:", userId);
+                    }
+                    isFirebaseReady = true;
+                    // Start listening for poll results once Firebase is ready and user ID is set
+                    setupPollResultsListener();
+                });
+            } catch (error) {
+                console.error("Error initializing Firebase or authenticating:", error);
+            }
+        }
+
+        // Call Firebase initialization
+        initializeFirebase();
+
+
+        // Function to listen for real-time poll results
+        function setupPollResultsListener() {
+            const pollResultsDisplay = document.getElementById('pollResultsDisplay');
+            if (!pollResultsDisplay) {
+                console.error("Poll results display element not found.");
+                return;
+            }
+
+            // Define the activity categories
+            const activityCategories = {
+                "Curious": "Curious (History, Culture, Tours)",
+                "Foodies": "Foodies (Cooking, Tasting, Street Food)",
+                "Pampered": "Pampered (Spa, Yoga, Personal Services)",
+                "Adventures": "Adventures (ATV, Buggy, Paratrike)"
+            };
+
+            // Ensure Firebase is ready before setting up listener
+            const checkFirebaseReadyInterval = setInterval(() => {
+                if (isFirebaseReady && db) {
+                    clearInterval(checkFirebaseReadyInterval);
+                    const pollRef = collection(db, `artifacts/${appId}/public/data/bachelorPartyPoll`);
+                    
+                    onSnapshot(pollRef, (snapshot) => {
+                        const groupedResults = {};
+                        for (const category in activityCategories) {
+                            groupedResults[category] = new Set(); // Use Set to store unique names
+                        }
+
+                        snapshot.forEach(doc => {
+                            const data = doc.data();
+                            const name = data.participantName || 'Anonymous';
+                            const activities = data.selectedActivities || [];
+                            
+                            activities.forEach(activity => {
+                                if (groupedResults[activity]) { // Only add if it's a known category
+                                    groupedResults[activity].add(name); // Add name to the Set
+                                }
+                            });
+                        });
+
+                        let resultsHtml = '';
+                        resultsHtml += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">'; // Adjusted grid columns
+                        let hasResults = false;
+
+                        for (const categoryKey in activityCategories) {
+                            const categoryFullName = activityCategories[categoryKey];
+                            const participants = Array.from(groupedResults[categoryKey]); // Convert Set to Array for display
+
+                            resultsHtml += `
+                                <div class="p-4 bg-gray-800 rounded-lg shadow-inner">
+                                    <h4 class="text-lg font-semibold text-fbd38d mb-2">${categoryFullName}</h4>
+                            `;
+                            if (participants.length > 0) {
+                                hasResults = true;
+                                resultsHtml += '<ul class="list-disc list-inside ml-2 text-gray-300 text-sm space-y-1">';
+                                participants.forEach(name => {
+                                    resultsHtml += `<li>${name}</li>`;
+                                });
+                                resultsHtml += '</ul>';
+                            } else {
+                                resultsHtml += '<p class="text-gray-400 text-xs italic">No one has selected this yet.</p>';
+                            }
+                            resultsHtml += `</div>`;
+                        }
+                        resultsHtml += `</div>`;
+
+                        if (!hasResults && snapshot.empty) {
+                             pollResultsDisplay.innerHTML = '<p class="text-gray-400 text-center py-4">No poll responses yet. Be the first to vote!</p>';
+                        } else {
+                            pollResultsDisplay.innerHTML = resultsHtml;
+                        }
+
+                    }, (error) => {
+                        console.error("Error listening to poll results:", error);
+                        pollResultsDisplay.innerHTML = `<p class="text-red-400 text-center py-4">Error loading poll results.</p>`;
+                    });
+                }
+            }, 100); // Check every 100ms if Firebase is ready
+        }
+
+
+        // Function to call the Gemini API
+        async function callGeminiAPI(prompt, outputElementId, spinnerElementId) {
+            const outputElement = document.getElementById(outputElementId);
+            const spinner = document.getElementById(spinnerElementId);
+
+            outputElement.innerHTML = ''; // Clear previous content
+            outputElement.classList.add('hidden'); // Hide output until content is ready
+            spinner.classList.remove('hidden'); // Show spinner
+
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Canvas will automatically provide the API key at runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('API Error:', errorData);
+                    outputElement.innerHTML = `<p class="text-red-400">Error: Could not generate content. Please try again.</p>`;
+                    outputElement.classList.remove('hidden');
+                    return;
+                }
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    outputElement.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`; // Display the response, preserve newlines
+                    outputElement.classList.remove('hidden');
+                } else {
+                    outputElement.innerHTML = `<p class="text-red-400">No content generated. Please try a different prompt.</p>`;
+                    outputElement.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+                outputElement.innerHTML = `<p class="text-red-400">An unexpected error occurred. Please check your network connection.</p>`;
+                outputElement.classList.remove('hidden');
+            } finally {
+                spinner.classList.add('hidden'); // Hide spinner
+            }
+        }
+
+        // Event listener for Itinerary Suggestion button
+        document.getElementById('generateItineraryBtn').addEventListener('click', () => {
+            const vibe = document.getElementById('itineraryInput').value.trim();
+            const prompt = `Generate a 3-day itinerary for a bachelor party in Cartagena, Colombia, focusing on a "${vibe || 'luxury and nightlife'}" vibe. The attendees are 37 and up, so keep it sophisticated but fun. Include suggestions for activities, dining, and nightlife. Format it clearly with day headings and bullet points.`;
+            callGeminiAPI(prompt, 'itineraryOutput', 'itinerarySpinner');
+        });
+
+        // Event listener for Slang & Phrases button
+        document.getElementById('generateSlangBtn').addEventListener('click', () => {
+            const prompt = `Provide 5-7 common and fun Colombian Spanish slang words or phrases that would be useful for a group of men (37+) visiting Cartagena for a bachelor party. Include the phrase, its literal translation (if applicable), and its common meaning/usage. Keep it light and appropriate for a party setting.`;
+            callGeminiAPI(prompt, 'slangOutput', 'slangSpinner');
+        });
+
+        // Poll Form Submission Logic
+        document.getElementById('activityPollForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitPollBtn');
+            const pollSpinner = document.getElementById('pollSpinner');
+            const pollMessage = document.getElementById('pollMessage');
+            const participantName = document.getElementById('participantName').value.trim();
+            const selectedActivities = Array.from(document.querySelectorAll('input[name="activityType"]:checked')).map(cb => cb.value);
+
+            // Basic validation
+            if (!participantName) {
+                pollMessage.textContent = 'Please enter your name/nickname.';
+                pollMessage.classList.remove('hidden');
+                pollMessage.classList.remove('text-green-400');
+                pollMessage.classList.add('text-red-400');
+                return;
+            }
+            if (selectedActivities.length === 0) {
+                pollMessage.textContent = 'Please select at least one activity type.';
+                pollMessage.classList.remove('hidden');
+                pollMessage.classList.remove('text-green-400');
+                pollMessage.classList.add('text-red-400');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            pollSpinner.classList.remove('hidden');
+            pollMessage.classList.add('hidden'); // Hide previous message
+
+            // Wait for Firebase to be ready
+            while (!isFirebaseReady) {
+                await new Promise(resolve => setTimeout(resolve, 100)); // Wait 100ms
+            }
+
+            try {
+                if (!db || !auth.currentUser) {
+                    throw new Error("Firebase or authenticated user not available.");
+                }
+
+                const pollRef = collection(db, `artifacts/${appId}/public/data/bachelorPartyPoll`);
+                await addDoc(pollRef, {
+                    userId: userId, // Use the user ID from Firebase Auth
+                    participantName: participantName,
+                    selectedActivities: selectedActivities,
+                    timestamp: serverTimestamp()
+                });
+
+                pollMessage.textContent = 'Thank you for your submission! Your preferences have been recorded.';
+                pollMessage.classList.remove('hidden');
+                pollMessage.classList.remove('text-red-400');
+                pollMessage.classList.add('text-green-400');
+
+                // Optionally clear the form
+                document.getElementById('activityPollForm').reset();
+
+            } catch (error) {
+                console.error("Error submitting poll:", error);
+                pollMessage.textContent = `Error submitting poll: ${error.message}. Please try again.`;
+                pollMessage.classList.remove('hidden');
+                pollMessage.classList.remove('text-green-400');
+                pollMessage.classList.add('text-red-400');
+            } finally {
+                submitBtn.disabled = false;
+                pollSpinner.classList.add('hidden');
+            }
+        });
+
+
+        // Countdown Timer Logic
+        function startCountdown() {
+            // Set the date we're counting down to (August 13, 2025, 00:00:00)
+            const countDownDate = new Date("Aug 13, 2025 00:00:00").getTime();
+
+            // Update the count down every 1 second
+            const x = setInterval(function() {
+                // Get today's date and time
+                const now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                const distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="time-display"
+                const timeDisplay = document.getElementById("time-display");
+                if (timeDisplay) {
+                    timeDisplay.innerHTML = `
+                        ${days}<span>Days</span> ${hours}<span>Hrs</span> ${minutes}<span>Mins</span> ${seconds}<span>Secs</span>
+                    `;
+                }
+
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                    if (timeDisplay) {
+                        timeDisplay.innerHTML = "THE PARTY HAS BEGUN!";
+                    }
+                }
+            }, 1000);
+        }
+
+        // Start the countdown when the window loads
+        window.onload = startCountdown;
+
+
+        // Carousel Logic for Yacht
+        const yachtCarouselImagesContainer = document.getElementById('yachtCarouselImages');
+        // Select both img and video elements
+        const yachtMedia = yachtCarouselImagesContainer ? yachtCarouselImagesContainer.querySelectorAll('img, video') : [];
+        let currentYachtImageIndex = 0;
+
+        function showYachtImage(index) {
+            if (!yachtCarouselImagesContainer || yachtMedia.length === 0) return;
+            // The flex container's width should be the sum of all media items' widths.
+            // Since each media item has flex: 0 0 100%, it means it takes 100% of the *parent's visible width*.
+            // So, the total width of the carousel-images container should be (number of items * 100%)
+            // relative to its own parent (carousel-container).
+            yachtCarouselImagesContainer.style.transform = `translateX(${-index * 100}%)`; 
+            updateDots('yachtCarouselDots', index, yachtMedia.length);
+        }
+
+        // Make moveSlide globally accessible
+        window.moveSlide = function(direction) {
+            if (yachtMedia.length === 0) return; // Use yachtMedia for length check
+            currentYachtImageIndex += direction;
+            if (currentYachtImageIndex >= yachtMedia.length) {
+                currentYachtImageIndex = 0; // Loop back to the start
+            } else if (currentYachtImageIndex < 0) {
+                currentYachtImageIndex = yachtMedia.length - 1; // Loop to the end
+            }
+            showYachtImage(currentYachtImageIndex);
+        }
+
+        // Initialize carousel on load
+        window.addEventListener('load', () => {
+            if (yachtMedia.length > 0) { // Use yachtMedia for length check
+                showYachtImage(currentYachtImageIndex);
+                createDots('yachtCarouselDots', yachtMedia.length, goToYachtSlide);
+            }
+            if (villaMedia.length > 0) { // Initialize villa carousel
+                showVillaImage(currentVillaImageIndex);
+                createDots('villaCarouselDots', villaMedia.length, goToVillaSlide);
+            }
+        });
+
+        // Villa Carousel Logic
+        const villaCarouselImagesContainer = document.getElementById('villaCarouselImages');
+        // Select both img and video elements for villa
+        const villaMedia = villaCarouselImagesContainer ? villaCarouselImagesContainer.querySelectorAll('img, video') : [];
+        let currentVillaImageIndex = 0;
+
+        function showVillaImage(index) {
+            if (!villaCarouselImagesContainer || villaMedia.length === 0) return;
+            villaCarouselImagesContainer.style.transform = `translateX(${-index * 100}%)`; 
+            updateDots('villaCarouselDots', index, villaMedia.length);
+        }
+
+        // Make moveVillaSlide globally accessible
+        window.moveVillaSlide = function(direction) {
+            if (villaMedia.length === 0) return; // Use villaMedia for length check
+            currentVillaImageIndex += direction;
+            if (currentVillaImageIndex >= villaMedia.length) {
+                currentVillaImageIndex = 0; // Loop back to the start
+            } else if (currentVillaImageIndex < 0) {
+                currentVillaImageIndex = villaMedia.length - 1; // Loop to the end
+            }
+            showVillaImage(currentVillaImageIndex);
+        }
+
+        // Touch/Swipe functionality for carousels
+        function addSwipeSupport(carouselContainer, moveFunction) {
+            if (!carouselContainer) return;
+            
+            let startX = 0;
+            let startY = 0;
+            let distX = 0;
+            let distY = 0;
+            let threshold = 100; // Minimum distance for swipe
+            let restraint = 100; // Maximum distance perpendicular to swipe direction
+            
+            carouselContainer.addEventListener('touchstart', function(e) {
+                const touchObj = e.changedTouches[0];
+                startX = touchObj.pageX;
+                startY = touchObj.pageY;
+            }, { passive: true });
+            
+            carouselContainer.addEventListener('touchmove', function(e) {
+                e.preventDefault(); // Prevent scrolling when swiping
+            }, { passive: false });
+            
+            carouselContainer.addEventListener('touchend', function(e) {
+                const touchObj = e.changedTouches[0];
+                distX = touchObj.pageX - startX;
+                distY = touchObj.pageY - startY;
+                
+                // Check if swipe meets threshold and is more horizontal than vertical
+                if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
+                    if (distX > 0) {
+                        // Swiped right - go to previous image
+                        moveFunction(-1);
+                    } else {
+                        // Swiped left - go to next image
+                        moveFunction(1);
+                    }
+                }
+            }, { passive: true });
+        }
+
+        // Add swipe support to both carousels
+        addSwipeSupport(yachtCarouselImagesContainer, window.moveSlide);
+        addSwipeSupport(villaCarouselImagesContainer, window.moveVillaSlide);
+
+        // Carousel Dots Management
+        function createDots(dotsContainerId, mediaCount, clickHandler) {
+            const dotsContainer = document.getElementById(dotsContainerId);
+            if (!dotsContainer) return;
+            
+            dotsContainer.innerHTML = ''; // Clear existing dots
+            
+            // Limit to maximum 10 dots
+            const maxDots = 10;
+            const dotCount = Math.min(mediaCount, maxDots);
+            const imagesPerDot = Math.ceil(mediaCount / dotCount);
+            
+            for (let i = 0; i < dotCount; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot';
+                if (i === 0) dot.classList.add('active'); // First dot is active
+                
+                // Calculate which image this dot should jump to
+                const targetImageIndex = i * imagesPerDot;
+                dot.addEventListener('click', () => clickHandler(Math.min(targetImageIndex, mediaCount - 1)));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateDots(dotsContainerId, activeIndex, mediaCount) {
+            const dotsContainer = document.getElementById(dotsContainerId);
+            if (!dotsContainer) return;
+            
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            const maxDots = 10;
+            const dotCount = Math.min(mediaCount, maxDots);
+            const imagesPerDot = Math.ceil(mediaCount / dotCount);
+            
+            // Calculate which dot should be active based on current image
+            const activeDotIndex = Math.floor(activeIndex / imagesPerDot);
+            
+            dots.forEach((dot, index) => {
+                if (index === activeDotIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Dot click handlers
+        function goToYachtSlide(index) {
+            currentYachtImageIndex = index;
+            showYachtImage(currentYachtImageIndex);
+        }
+
+        function goToVillaSlide(index) {
+            currentVillaImageIndex = index;
+            showVillaImage(currentVillaImageIndex);
+        }
+
+        // Back to Top Button Logic
+        const backToTopButton = document.getElementById('back-to-top');
+
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) { // Show after scrolling 300px
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        // Smooth scroll to top when button is clicked
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
