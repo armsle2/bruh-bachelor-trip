@@ -235,7 +235,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.3);
             color: #fbd38d;
             border: none;
             padding: 0.75rem 1rem;
@@ -250,7 +250,7 @@
         }
 
         .carousel-button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.6);
         }
 
         .carousel-button:active {
@@ -279,10 +279,10 @@
                 padding: 0;
                 font-size: 1.2rem;
                 border-radius: 50%;
-                background-color: rgba(0, 0, 0, 0.7);
+                background-color: rgba(0, 0, 0, 0.4);
                 backdrop-filter: blur(4px);
                 -webkit-backdrop-filter: blur(4px);
-                border: 2px solid rgba(251, 211, 141, 0.8);
+                border: 2px solid rgba(251, 211, 141, 0.6);
                 color: #fbd38d;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
                 -webkit-tap-highlight-color: transparent;
@@ -290,12 +290,12 @@
             }
             
             .carousel-button:hover {
-                background-color: rgba(0, 0, 0, 0.8);
+                background-color: rgba(0, 0, 0, 0.6);
                 border-color: #fbd38d;
             }
             
             .carousel-button:active {
-                background-color: rgba(0, 0, 0, 0.9);
+                background-color: rgba(0, 0, 0, 0.7);
                 border-color: #fbd38d;
                 opacity: 0.8;
             }
@@ -309,105 +309,7 @@
             }
         }
 
-        /* Carousel Dots/Indicators */
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 4px;
-            margin-top: 1rem;
-            padding: 0 0.5rem;
-            overflow-x: auto;
-            overflow-y: hidden;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            max-width: 100%;
-        }
 
-        .carousel-dots::-webkit-scrollbar {
-            display: none;
-        }
-
-        .carousel-dots-container {
-            position: relative;
-        }
-
-        .carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: rgba(251, 211, 141, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-
-        .carousel-dot.active {
-            background-color: #fbd38d; /* Full gold for active */
-            transform: scale(1.2);
-        }
-
-        .carousel-dot:hover {
-            background-color: rgba(251, 211, 141, 0.6);
-        }
-
-        /* Hide dots on desktop, show arrows */
-        @media (min-width: 769px) {
-            .carousel-dots {
-                display: none;
-            }
-            
-            /* Ensure arrows are visible on desktop */
-            .carousel-button {
-                display: block;
-            }
-        }
-
-        /* Show dots on mobile, hide arrows */
-        @media (max-width: 768px) {
-            .carousel-dots {
-                display: flex;
-            }
-            
-            /* Improve touch targets on mobile */
-            .carousel-dot {
-                width: 12px;
-                height: 12px;
-                margin: 0 2px;
-                cursor: pointer;
-                -webkit-tap-highlight-color: transparent;
-                touch-action: manipulation;
-            }
-            
-            .carousel-dot:active {
-                transform: scale(1.3);
-            }
-            
-            /* Better spacing for mobile carousel */
-            .carousel-container {
-                margin-bottom: 0.5rem;
-                -webkit-overflow-scrolling: touch;
-                position: relative;
-            }
-            
-            .carousel-dots {
-                margin-top: 1rem;
-                padding: 0.5rem;
-                gap: 6px;
-                justify-content: center;
-                max-width: 100%;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scroll-snap-type: x proximity;
-            }
-            
-            .carousel-dot {
-                flex-shrink: 0;
-                scroll-snap-align: center;
-            }
-        }
 
         /* Back to Top Button Styles */
         #back-to-top {
@@ -467,7 +369,7 @@
         <div class="gradient-overlay absolute inset-0"></div>
         <div class="relative z-10 p-4 max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4 drop-shadow-lg">
-                The Ultimate Send-Off: <br> Cartagena Bachelor Bash v2.1
+                The Ultimate Send-Off: <br> Cartagena Bachelor Bash v2.2
             </h1>
             <p class="text-xl md:text-2xl mb-8 font-light drop-shadow-md">
                 Celebrating Devin's Last Ride in Style
@@ -624,10 +526,7 @@
                         <button class="carousel-button prev" onclick="event.preventDefault(); window.moveVillaSlide(-1)">&#10094;</button>
                         <button class="carousel-button next" onclick="event.preventDefault(); window.moveVillaSlide(1)">&#10095;</button>
                     </div>
-                    <!-- Villa Carousel Dots -->
-                    <div class="carousel-dots-container">
-                        <div class="carousel-dots" id="villaCarouselDots"></div>
-                    </div>
+
                     
                     <div class="mt-6 text-center">
                         <a href="https://www.airbnb.com/rooms/1304668607572162965?guests=1&adults=1&s=66&source=embed_widget" 
@@ -685,10 +584,7 @@
                         <button class="carousel-button prev" onclick="event.preventDefault(); window.moveSlide(-1)">&#10094;</button>
                         <button class="carousel-button next" onclick="event.preventDefault(); window.moveSlide(1)">&#10095;</button>
                     </div>
-                    <!-- Yacht Carousel Dots -->
-                    <div class="carousel-dots-container">
-                        <div class="carousel-dots" id="yachtCarouselDots"></div>
-                    </div>
+
 
                     <ul class="list-disc list-inside text-gray-300 mb-6 space-y-2 mt-8">
                         <li><strong>The Vessel:</strong> A spacious 51-foot private charter with a dedicated captain and two attentive deckhands.</li>
@@ -1204,13 +1100,10 @@
         let currentYachtImageIndex = 0;
 
         function showYachtImage(index) {
-            if (!yachtCarouselImagesContainer || yachtMedia.length === 0) return;
-            // The flex container's width should be the sum of all media items' widths.
-            // Since each media item has flex: 0 0 100%, it means it takes 100% of the *parent's visible width*.
-            // So, the total width of the carousel-images container should be (number of items * 100%)
-            // relative to its own parent (carousel-container).
-            yachtCarouselImagesContainer.style.transform = `translateX(${-index * 100}%)`; 
-            updateDots('yachtCarouselDots', index, yachtMedia.length);
+            const yachtImages = document.querySelectorAll('#yachtCarouselImages img, #yachtCarouselImages video');
+            if (yachtImages.length === 0) return;
+            
+            yachtCarouselImagesContainer.style.transform = `translateX(${-index * 100}%)`;
         }
 
         // Make moveSlide globally accessible
@@ -1228,34 +1121,37 @@
         }
         window.moveSlide = moveSlide;
 
-        // Initialize carousel on load
-        window.addEventListener('load', () => {
-            if (yachtMedia.length > 0) {
-                showYachtImage(currentYachtImageIndex);
-                createDots('yachtCarouselDots', yachtMedia.length, goToYachtSlide);
+        // Simple carousel initialization  
+        let carouselsInitialized = false;
+        
+        function initializeCarousels() {
+            if (carouselsInitialized) return; // Prevent double initialization
+            
+            // Initialize yacht carousel
+            const yachtImages = document.querySelectorAll('#yachtCarouselImages img, #yachtCarouselImages video');
+            if (yachtImages.length > 0) {
+                currentYachtImageIndex = 0;
+                showYachtImage(0);
             }
-            if (villaMedia.length > 0) {
-                showVillaImage(currentVillaImageIndex);
-                createDots('villaCarouselDots', villaMedia.length, goToVillaSlide);
+            
+            // Initialize villa carousel
+            const villaImages = document.querySelectorAll('#villaCarouselImages img, #villaCarouselImages video');
+            if (villaImages.length > 0) {
+                currentVillaImageIndex = 0;
+                showVillaImage(0);
             }
+            
+            carouselsInitialized = true;
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(initializeCarousels, 250);
         });
 
-        // Also initialize on DOMContentLoaded for faster loading
-        document.addEventListener('DOMContentLoaded', () => {
-            // Small delay to ensure images are loaded
-            setTimeout(() => {
-                const yachtImages = document.querySelectorAll('#yachtCarouselImages img, #yachtCarouselImages video');
-                const villaImages = document.querySelectorAll('#villaCarouselImages img, #villaCarouselImages video');
-                
-                if (yachtImages.length > 0) {
-                    showYachtImage(0);
-                    createDots('yachtCarouselDots', yachtImages.length, goToYachtSlide);
-                }
-                if (villaImages.length > 0) {
-                    showVillaImage(0);
-                    createDots('villaCarouselDots', villaImages.length, goToVillaSlide);
-                }
-            }, 100);
+        // Also initialize on window load as backup
+        window.addEventListener('load', () => {
+            setTimeout(initializeCarousels, 100);
         });
 
         // Villa Carousel Logic
@@ -1265,9 +1161,10 @@
         let currentVillaImageIndex = 0;
 
         function showVillaImage(index) {
-            if (!villaCarouselImagesContainer || villaMedia.length === 0) return;
-            villaCarouselImagesContainer.style.transform = `translateX(${-index * 100}%)`; 
-            updateDots('villaCarouselDots', index, villaMedia.length);
+            const villaImages = document.querySelectorAll('#villaCarouselImages img, #villaCarouselImages video');
+            if (villaImages.length === 0) return;
+            
+            villaCarouselImagesContainer.style.transform = `translateX(${-index * 100}%)`;
         }
 
         // Make moveVillaSlide globally accessible
@@ -1365,72 +1262,7 @@
         addSwipeSupport(yachtCarouselImagesContainer, window.moveSlide);
         addSwipeSupport(villaCarouselImagesContainer, window.moveVillaSlide);
 
-        // Carousel Dots Management
-        function createDots(dotsContainerId, mediaCount, clickHandler) {
-            const dotsContainer = document.getElementById(dotsContainerId);
-            if (!dotsContainer) return;
-            
-            dotsContainer.innerHTML = ''; // Clear existing dots
-            
-            // Create a dot for each image (no limit)
-            for (let i = 0; i < mediaCount; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'carousel-dot';
-                if (i === 0) dot.classList.add('active'); // First dot is active
-                
-                dot.addEventListener('click', () => clickHandler(i));
-                dotsContainer.appendChild(dot);
-            }
-        }
 
-        function updateDots(dotsContainerId, activeIndex, mediaCount) {
-            const dotsContainer = document.getElementById(dotsContainerId);
-            if (!dotsContainer) return;
-            
-            const dots = dotsContainer.querySelectorAll('.carousel-dot');
-            
-            // Update active dot
-            dots.forEach((dot, index) => {
-                if (index === activeIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-            
-            // Scroll dots container to keep active dot visible
-            const activeDot = dots[activeIndex];
-            if (activeDot) {
-                const containerWidth = dotsContainer.offsetWidth;
-                const dotLeft = activeDot.offsetLeft;
-                const dotWidth = activeDot.offsetWidth;
-                const currentScroll = dotsContainer.scrollLeft;
-                
-                // Calculate if we need to scroll
-                const dotRight = dotLeft + dotWidth;
-                const visibleLeft = currentScroll;
-                const visibleRight = currentScroll + containerWidth;
-                
-                if (dotLeft < visibleLeft) {
-                    // Dot is to the left of visible area
-                    dotsContainer.scrollLeft = Math.max(0, dotLeft - 20);
-                } else if (dotRight > visibleRight) {
-                    // Dot is to the right of visible area
-                    dotsContainer.scrollLeft = dotRight - containerWidth + 20;
-                }
-            }
-        }
-
-        // Dot click handlers
-        function goToYachtSlide(index) {
-            currentYachtImageIndex = index;
-            showYachtImage(currentYachtImageIndex);
-        }
-
-        function goToVillaSlide(index) {
-            currentVillaImageIndex = index;
-            showVillaImage(currentVillaImageIndex);
-        }
 
         // Back to Top Button Logic
         const backToTopButton = document.getElementById('back-to-top');
