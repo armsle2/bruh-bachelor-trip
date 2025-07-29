@@ -214,9 +214,11 @@
 
         .carousel-images {
             display: flex;
-            height: 100%; /* Occupy full height of container */
+            height: 100%;
             transition: transform 0.5s ease-in-out;
-            /* Remove fixed width here, let flex items define it */
+            will-change: transform;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         .carousel-images img,
@@ -280,9 +282,11 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background-color: rgba(251, 211, 141, 0.3); /* Gold with transparency */
+            background-color: rgba(251, 211, 141, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .carousel-dot.active {
@@ -305,6 +309,21 @@
         @media (max-width: 768px) {
             .carousel-dots {
                 display: flex;
+            }
+            
+            /* Improve touch targets on mobile */
+            .carousel-dot {
+                width: 12px;
+                height: 12px;
+                margin: 0 4px;
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            /* Better spacing for mobile carousel */
+            .carousel-container {
+                margin-bottom: 1rem;
+                -webkit-overflow-scrolling: touch;
             }
         }
 
@@ -1122,14 +1141,32 @@
 
         // Initialize carousel on load
         window.addEventListener('load', () => {
-            if (yachtMedia.length > 0) { // Use yachtMedia for length check
+            if (yachtMedia.length > 0) {
                 showYachtImage(currentYachtImageIndex);
                 createDots('yachtCarouselDots', yachtMedia.length, goToYachtSlide);
             }
-            if (villaMedia.length > 0) { // Initialize villa carousel
+            if (villaMedia.length > 0) {
                 showVillaImage(currentVillaImageIndex);
                 createDots('villaCarouselDots', villaMedia.length, goToVillaSlide);
             }
+        });
+
+        // Also initialize on DOMContentLoaded for faster loading
+        document.addEventListener('DOMContentLoaded', () => {
+            // Small delay to ensure images are loaded
+            setTimeout(() => {
+                const yachtImages = document.querySelectorAll('#yachtCarouselImages img, #yachtCarouselImages video');
+                const villaImages = document.querySelectorAll('#villaCarouselImages img, #villaCarouselImages video');
+                
+                if (yachtImages.length > 0) {
+                    showYachtImage(0);
+                    createDots('yachtCarouselDots', yachtImages.length, goToYachtSlide);
+                }
+                if (villaImages.length > 0) {
+                    showVillaImage(0);
+                    createDots('villaCarouselDots', villaImages.length, goToVillaSlide);
+                }
+            }, 100);
         });
 
         // Villa Carousel Logic
@@ -1164,23 +1201,37 @@
             let startY = 0;
             let distX = 0;
             let distY = 0;
-            let threshold = 100; // Minimum distance for swipe
-            let restraint = 100; // Maximum distance perpendicular to swipe direction
+            let isScrolling = false;
+            let threshold = 50; // Reduced threshold for easier swiping
+            let restraint = 80; // Reduced restraint for better detection
             
             carouselContainer.addEventListener('touchstart', function(e) {
                 const touchObj = e.changedTouches[0];
-                startX = touchObj.pageX;
-                startY = touchObj.pageY;
+                startX = touchObj.clientX;
+                startY = touchObj.clientY;
+                isScrolling = false;
             }, { passive: true });
             
             carouselContainer.addEventListener('touchmove', function(e) {
-                e.preventDefault(); // Prevent scrolling when swiping
+                if (e.changedTouches.length > 1) return; // Ignore multi-touch
+                
+                const touchObj = e.changedTouches[0];
+                distX = touchObj.clientX - startX;
+                distY = touchObj.clientY - startY;
+                
+                // Determine if this is a horizontal swipe or vertical scroll
+                if (!isScrolling) {
+                    isScrolling = Math.abs(distY) > Math.abs(distX);
+                }
+                
+                // Prevent default only for horizontal swipes, allow vertical scrolling
+                if (!isScrolling && Math.abs(distX) > 10) {
+                    e.preventDefault();
+                }
             }, { passive: false });
             
             carouselContainer.addEventListener('touchend', function(e) {
-                const touchObj = e.changedTouches[0];
-                distX = touchObj.pageX - startX;
-                distY = touchObj.pageY - startY;
+                if (isScrolling) return; // Don't process if user was scrolling
                 
                 // Check if swipe meets threshold and is more horizontal than vertical
                 if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
