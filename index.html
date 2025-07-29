@@ -385,7 +385,7 @@
         <div class="gradient-overlay absolute inset-0"></div>
         <div class="relative z-10 p-4 max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4 drop-shadow-lg">
-                The Ultimate Send-Off: <br> Cartagena Bachelor Bash
+                The Ultimate Send-Off: <br> Cartagena Bachelor Bash v2
             </h1>
             <p class="text-xl md:text-2xl mb-8 font-light drop-shadow-md">
                 Celebrating Devin's Last Ride in Style
@@ -1197,52 +1197,75 @@
         function addSwipeSupport(carouselContainer, moveFunction) {
             if (!carouselContainer) return;
             
-            let startX = 0;
-            let startY = 0;
-            let distX = 0;
-            let distY = 0;
-            let isScrolling = false;
-            let threshold = 50; // Reduced threshold for easier swiping
-            let restraint = 80; // Reduced restraint for better detection
+            let touchData = {
+                startX: 0,
+                startY: 0,
+                distX: 0,
+                distY: 0,
+                isScrolling: false,
+                isTouching: false
+            };
+            
+            const threshold = 50;
+            const restraint = 80;
+            
+            function resetTouchData() {
+                touchData.startX = 0;
+                touchData.startY = 0;
+                touchData.distX = 0;
+                touchData.distY = 0;
+                touchData.isScrolling = false;
+                touchData.isTouching = false;
+            }
             
             carouselContainer.addEventListener('touchstart', function(e) {
-                const touchObj = e.changedTouches[0];
-                startX = touchObj.clientX;
-                startY = touchObj.clientY;
-                isScrolling = false;
+                if (e.touches.length !== 1) return; // Only handle single touch
+                
+                resetTouchData();
+                const touchObj = e.touches[0];
+                touchData.startX = touchObj.clientX;
+                touchData.startY = touchObj.clientY;
+                touchData.isTouching = true;
             }, { passive: true });
             
             carouselContainer.addEventListener('touchmove', function(e) {
-                if (e.changedTouches.length > 1) return; // Ignore multi-touch
+                if (!touchData.isTouching || e.touches.length !== 1) return;
                 
-                const touchObj = e.changedTouches[0];
-                distX = touchObj.clientX - startX;
-                distY = touchObj.clientY - startY;
+                const touchObj = e.touches[0];
+                touchData.distX = touchObj.clientX - touchData.startX;
+                touchData.distY = touchObj.clientY - touchData.startY;
                 
-                // Determine if this is a horizontal swipe or vertical scroll
-                if (!isScrolling) {
-                    isScrolling = Math.abs(distY) > Math.abs(distX);
+                // Determine scroll direction on first significant movement
+                if (!touchData.isScrolling && (Math.abs(touchData.distX) > 5 || Math.abs(touchData.distY) > 5)) {
+                    touchData.isScrolling = Math.abs(touchData.distY) > Math.abs(touchData.distX);
                 }
                 
-                // Prevent default only for horizontal swipes, allow vertical scrolling
-                if (!isScrolling && Math.abs(distX) > 10) {
+                // Prevent default only for horizontal swipes
+                if (!touchData.isScrolling && Math.abs(touchData.distX) > 10) {
                     e.preventDefault();
                 }
             }, { passive: false });
             
             carouselContainer.addEventListener('touchend', function(e) {
-                if (isScrolling) return; // Don't process if user was scrolling
+                if (!touchData.isTouching) return;
                 
-                // Check if swipe meets threshold and is more horizontal than vertical
-                if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
-                    if (distX > 0) {
-                        // Swiped right - go to previous image
-                        moveFunction(-1);
+                // Only process horizontal swipes
+                if (!touchData.isScrolling && 
+                    Math.abs(touchData.distX) >= threshold && 
+                    Math.abs(touchData.distY) <= restraint) {
+                    
+                    if (touchData.distX > 0) {
+                        moveFunction(-1); // Swipe right - previous
                     } else {
-                        // Swiped left - go to next image
-                        moveFunction(1);
+                        moveFunction(1);  // Swipe left - next
                     }
                 }
+                
+                resetTouchData();
+            }, { passive: true });
+            
+            carouselContainer.addEventListener('touchcancel', function(e) {
+                resetTouchData();
             }, { passive: true });
         }
 
