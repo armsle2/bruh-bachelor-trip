@@ -19,16 +19,25 @@
             color: #fbd38d; /* Gold accent for headings */
         }
         .hero-background {
-            background-image: url('https://res.cloudinary.com/dnmluw4fs/image/upload/v1753559083/DEV09501_copy_iebxf8.jpg'); /* Your groom's photo */
-            background-size: cover;
-            background-position: top center; /* Changed to top center to show face */
-            background-attachment: fixed; /* Parallax effect */
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            z-index: 1;
         }
         ._xlzko7 {
             width: auto !important;
         }
         .gradient-overlay {
             background: linear-gradient(to bottom, rgba(26, 32, 44, 0.7), rgba(26, 32, 44, 0.9));
+            z-index: 2;
         }
         .card {
             background-color: #2d3748; /* Slightly lighter dark for cards */
@@ -146,6 +155,49 @@
         }
         .highlight-card-link p {
             color: #a0aec0; /* text-gray-400 */
+        }
+
+        /* Important Card Styles */
+        .important-card {
+            position: relative;
+            background: linear-gradient(135deg, #c2410c, #9a3412) !important; /* Warmer orange-red gradient */
+            border: 3px solid #fbbf24 !important; /* Gold border */
+            box-shadow: 0 0 15px rgba(194, 65, 12, 0.3), 0 10px 15px -3px rgba(0, 0, 0, 0.3) !important;
+            animation: importantPulse 3s ease-in-out infinite;
+        }
+        .important-card:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 0 20px rgba(194, 65, 12, 0.4), 0 15px 20px -5px rgba(0, 0, 0, 0.4) !important;
+        }
+        .important-card h3 {
+            color: #fef3c7 !important; /* Light yellow for better contrast */
+        }
+        .important-card p {
+            color: #fde68a !important; /* Light yellow for description */
+        }
+        .important-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #fbbf24; /* Gold background */
+            color: #1a202c; /* Dark text */
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes importantPulse {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(194, 65, 12, 0.3), 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(194, 65, 12, 0.4), 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            }
         }
 
         /* Carousel Styles */
@@ -310,6 +362,7 @@
 
     <!-- Hero Section -->
     <header class="hero-background relative h-screen flex items-center justify-center text-center text-white">
+        <img src="https://res.cloudinary.com/dnmluw4fs/image/upload/v1753559083/DEV09501_copy_iebxf8.jpg" alt="Devin - The Groom" class="hero-image">
         <div class="gradient-overlay absolute inset-0"></div>
         <div class="relative z-10 p-4 max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4 drop-shadow-lg">
@@ -374,36 +427,35 @@
                     <h3>Private Yacht Excursion</h3>
                     <p>Sail the Caribbean waters, explore Rosario Islands, and party on deck.</p>
                 </a>
-                <!-- Highlight 3 -->
-                <div class="highlight-card-link">
-                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Walled+City+Nights" alt="Walled City Nights">
-                    <h3>Walled City Nightlife</h3>
-                    <p>Experience the vibrant and exclusive nightlife within Cartagena's historic walls.</p>
-                </div>
-                <!-- Highlight 4 -->
-                <div class="highlight-card-link">
-                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Fine+Dining" alt="Fine Dining">
-                    <h3>Gourmet Dining</h3>
-                    <p>Savor the exquisite flavors of Colombian cuisine at top-tier restaurants.</p>
-                </div>
-                <!-- Highlight 5: Daytime Adventures (now clickable) -->
+                <!-- Highlight 3: Daytime Adventures (now clickable) - moved to third spot -->
                 <a href="#activity-poll" class="highlight-card-link">
                     <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Adventure" alt="Adventure">
                     <h3>Daytime Adventures</h3>
                     <p>From mud volcanoes to historic tours, take our poll to help us plan the perfect activities for everyone.</p>
                 </a>
-                <!-- Highlight 6 -->
-                <div class="highlight-card-link">
-                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Brotherhood" alt="Brotherhood">
-                    <h3>Unforgettable Brotherhood</h3>
-                    <p>Create lasting memories with the groom and the crew.</p>
-                </div>
-                <!-- Highlight 7: Important Travel Information (now clickable) -->
-                <a href="#travel-info" class="highlight-card-link">
+                <!-- Highlight 4: Important Travel Information (now clickable) -->
+                <a href="#travel-info" class="highlight-card-link important-card">
+                    <div class="important-badge">📋 IMPORTANT</div>
                     <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Travel+Info" alt="Travel Information">
                     <h3>Important Travel Information</h3>
                     <p>Essential details for customs, packing, and arrival logistics for your trip.</p>
                 </a>
+                <!-- Hidden Highlights -->
+                <div class="highlight-card-link hidden">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Walled+City+Nights" alt="Walled City Nights">
+                    <h3>Walled City Nightlife</h3>
+                    <p>Experience the vibrant and exclusive nightlife within Cartagena's historic walls.</p>
+                </div>
+                <div class="highlight-card-link hidden">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Fine+Dining" alt="Fine Dining">
+                    <h3>Gourmet Dining</h3>
+                    <p>Savor the exquisite flavors of Colombian cuisine at top-tier restaurants.</p>
+                </div>
+                <div class="highlight-card-link hidden">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Brotherhood" alt="Brotherhood">
+                    <h3>Unforgettable Brotherhood</h3>
+                    <p>Create lasting memories with the groom and the crew.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -553,8 +605,15 @@
                     <h3 class="text-xl font-semibold mb-4 text-fbd38d">Customs & Entry</h3>
                     <p class="text-gray-400 mb-4">
                         <strong>Pre-fill Your Check-Mig Form:</strong> All travelers entering or exiting Colombia must fill out the Check-Mig form online within 72 hours prior to their flight. This is mandatory and helps streamline your entry process.
-                        You can find it on the Migración Colombia website. Fill it out before you depart!
                     </p>
+                    <div class="text-center mb-6">
+                        <a href="https://apps.migracioncolombia.gov.co/pre-registro/en" 
+                           target="_blank" 
+                           class="btn-primary inline-block px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl">
+                            🛂 Complete Check-Mig Form
+                        </a>
+                        <p class="text-gray-500 text-sm mt-2">Fill this out before you depart!</p>
+                    </div>
 
                     <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Packing Essentials</h3>
                     <ul class="list-disc list-inside text-gray-300 mb-6 space-y-2">
@@ -567,18 +626,43 @@
                         <li><strong>Portable Power Bank:</b> To keep your devices charged on the go.</li>
                     </ul>
 
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Stay Connected - Group Chat</h3>
+                    <p class="text-gray-400 mb-4">
+                        Join our dedicated WhatsApp group for real-time updates, coordination, and to stay connected with the crew throughout the trip!
+                    </p>
+                    <div class="text-center mb-6">
+                        <a href="https://chat.whatsapp.com/DuIxTjR50nPBEVl4phAopt?mode=ac_t" 
+                           target="_blank" 
+                           class="btn-primary inline-block px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl">
+                            💬 Join WhatsApp Group
+                        </a>
+                        <p class="text-gray-500 text-sm mt-2">Essential for trip coordination and updates</p>
+                    </div>
+
                     <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Arrivals & Transportation</h3>
                     <p class="text-gray-400 mb-4">
                         To help coordinate potential shuttle services from the airport to the villa, please send your flight arrival time and airline information directly to Leaveil. We'll do our best to group arrivals for smooth transfers.
                     </p>
 
-                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Duty-Free Liquor Guidelines</h3>
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Bring Two Bottles of Liquor</h3>
                     <p class="text-gray-400 mb-4">
-                        Each person is encouraged to pack or buy **two bottles of liquor at duty-free** upon arrival (or before departure from your home airport). This will significantly help stock the villa bar and save on local liquor costs.
+                        <strong>We're asking everyone to bring two bottles of liquor:</strong> one for the yacht excursion and one for yourself. This ensures we're well-stocked for our private yacht day and you have your preferred spirits for the trip!
                     </p>
-                    <p class="text-gray-400 mb-6">
-                        <strong>What to Expect:</strong> Duty-free shops are usually located after security at your departure airport and upon arrival at Cartagena's Rafael Núñez International Airport (CTG). Prices are often lower than local stores. You'll need your boarding pass to purchase. Be aware of any specific Colombian customs limits, though two bottles per person are generally well within typical allowances for personal consumption.
+                    <p class="text-gray-400 mb-4">
+                        <strong>Duty-Free Recommendation:</strong> If you choose to buy duty-free liquor, we recommend purchasing at your American departure airport rather than in Cartagena. American duty-free shops typically have better selection and prices.
                     </p>
+                    
+                    <div class="bg-gray-700 p-4 rounded-lg mb-4">
+                        <h4 class="text-fbd38d font-semibold mb-2">⏰ Critical Timing Information:</h4>
+                        <ul class="list-disc list-inside text-gray-300 space-y-1">
+                            <li>Purchase at least <strong>45 minutes before flight departure</strong></li>
+                            <li>Liquor is delivered directly to your gate when boarding</li>
+                            <li>Make this one of the <strong>first things you do after security</strong></li>
+                            <li><strong>Choose a duty-free shop close to your gate</strong> - shops far from your gate may refuse service due to delivery logistics</li>
+                            <li>Especially important if you have a connecting flight</li>
+                        </ul>
+                    </div>
+                    
 
                 </div>
             </div>
