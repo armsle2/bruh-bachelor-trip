@@ -761,7 +761,7 @@
     <!-- Footer -->
     <footer class="bg-gray-950 py-8 text-center text-gray-500 text-sm mt-auto">
         <div class="container mx-auto px-4">
-            <p>&copy; 2025 [Brother's Name] Bachelor Party. All Rights Reserved.</p>
+            <p>&copy; 2025 Devin's Bachelor Party. All Rights Reserved.</p>
             <p>Designed for an unforgettable experience.</p>
         </div>
     </footer>
@@ -769,22 +769,35 @@
     <!-- Back to Top Button -->
     <button id="back-to-top" title="Back to Top">↑</button>
 
+    <!-- Firebase Configuration -->
+    <script src="firebase-config.js"></script>
+
     <script type="module">
         // Firebase Imports
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
         import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-        // Firebase Initialization Variables (provided by Canvas environment)
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
+        // Firebase Configuration
+        const firebaseConfig = window.firebaseAppConfig || {};
+        const appId = firebaseConfig.appId || 'default-app-id';
+        const initialAuthToken = null; 
 
         let app, db, auth, userId;
         let isFirebaseReady = false;
 
-        // Initialize Firebase and set up auth listener
         async function initializeFirebase() {
+            if (!firebaseConfig || !firebaseConfig.apiKey || !firebaseConfig.projectId) {
+                userId = localStorage.getItem('anonUserId');
+                if (!userId) {
+                    userId = 'anon-' + crypto.randomUUID();
+                    localStorage.setItem('anonUserId', userId);
+                }
+                isFirebaseReady = false;
+                setupOfflinePollDisplay();
+                return;
+            }
+
             try {
                 app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
@@ -800,36 +813,40 @@
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
                         userId = user.uid;
-                        console.log("Firebase Authenticated. User ID:", userId);
                     } else {
-                        // For anonymous users, generate a unique ID
                         userId = localStorage.getItem('anonUserId');
                         if (!userId) {
                             userId = 'anon-' + crypto.randomUUID();
                             localStorage.setItem('anonUserId', userId);
                         }
-                        console.log("Firebase Anonymous User ID:", userId);
                     }
                     isFirebaseReady = true;
-                    // Start listening for poll results once Firebase is ready and user ID is set
                     setupPollResultsListener();
                 });
             } catch (error) {
-                console.error("Error initializing Firebase or authenticating:", error);
+                userId = localStorage.getItem('anonUserId');
+                if (!userId) {
+                    userId = 'anon-' + crypto.randomUUID();
+                    localStorage.setItem('anonUserId', userId);
+                }
+                isFirebaseReady = false;
+                setupOfflinePollDisplay();
             }
         }
 
-        // Call Firebase initialization
+        function setupOfflinePollDisplay() {
+            const pollResultsDisplay = document.getElementById('pollResultsDisplay');
+            if (pollResultsDisplay) {
+                pollResultsDisplay.innerHTML = '<p class="text-gray-400 text-center py-4">Poll results will be available when Firebase is configured.</p>';
+            }
+        }
+
         initializeFirebase();
 
 
-        // Function to listen for real-time poll results
         function setupPollResultsListener() {
             const pollResultsDisplay = document.getElementById('pollResultsDisplay');
-            if (!pollResultsDisplay) {
-                console.error("Poll results display element not found.");
-                return;
-            }
+            if (!pollResultsDisplay) return;
 
             // Define the activity categories
             const activityCategories = {
@@ -896,7 +913,6 @@
                         }
 
                     }, (error) => {
-                        console.error("Error listening to poll results:", error);
                         pollResultsDisplay.innerHTML = `<p class="text-red-400 text-center py-4">Error loading poll results.</p>`;
                     });
                 }
@@ -904,20 +920,19 @@
         }
 
 
-        // Function to call the Gemini API
         async function callGeminiAPI(prompt, outputElementId, spinnerElementId) {
             const outputElement = document.getElementById(outputElementId);
             const spinner = document.getElementById(spinnerElementId);
 
-            outputElement.innerHTML = ''; // Clear previous content
-            outputElement.classList.add('hidden'); // Hide output until content is ready
-            spinner.classList.remove('hidden'); // Show spinner
+            outputElement.innerHTML = '';
+            outputElement.classList.add('hidden');
+            spinner.classList.remove('hidden');
 
             try {
                 let chatHistory = [];
                 chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                 const payload = { contents: chatHistory };
-                const apiKey = ""; // Canvas will automatically provide the API key at runtime
+                const apiKey = "";
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                 const response = await fetch(apiUrl, {
@@ -927,8 +942,6 @@
                 });
 
                 if (!response.ok) {
-                    const errorData = await response.json();
-                    console.error('API Error:', errorData);
                     outputElement.innerHTML = `<p class="text-red-400">Error: Could not generate content. Please try again.</p>`;
                     outputElement.classList.remove('hidden');
                     return;
@@ -947,11 +960,10 @@
                     outputElement.classList.remove('hidden');
                 }
             } catch (error) {
-                console.error('Fetch error:', error);
                 outputElement.innerHTML = `<p class="text-red-400">An unexpected error occurred. Please check your network connection.</p>`;
                 outputElement.classList.remove('hidden');
             } finally {
-                spinner.classList.add('hidden'); // Hide spinner
+                spinner.classList.add('hidden');
             }
         }
 
@@ -996,12 +1008,19 @@
 
             submitBtn.disabled = true;
             pollSpinner.classList.remove('hidden');
-            pollMessage.classList.add('hidden'); // Hide previous message
+            pollMessage.classList.add('hidden');
 
-            // Wait for Firebase to be ready
-            while (!isFirebaseReady) {
-                await new Promise(resolve => setTimeout(resolve, 100)); // Wait 100ms
-            }
+                                if (!isFirebaseReady) {
+                        pollMessage.textContent = 'Poll submission requires Firebase configuration.';
+                        pollMessage.classList.remove('hidden');
+                        pollMessage.classList.remove('text-red-400');
+                        pollMessage.classList.add('text-yellow-400');
+                        
+                        document.getElementById('activityPollForm').reset();
+                        submitBtn.disabled = false;
+                        pollSpinner.classList.add('hidden');
+                        return;
+                    }
 
             try {
                 if (!db || !auth.currentUser) {
@@ -1025,8 +1044,7 @@
                 document.getElementById('activityPollForm').reset();
 
             } catch (error) {
-                console.error("Error submitting poll:", error);
-                pollMessage.textContent = `Error submitting poll: ${error.message}. Please try again.`;
+                pollMessage.textContent = 'Error submitting poll. Please try again.';
                 pollMessage.classList.remove('hidden');
                 pollMessage.classList.remove('text-green-400');
                 pollMessage.classList.add('text-red-400');
