@@ -203,13 +203,13 @@
         /* Carousel Styles */
         .carousel-container {
             position: relative;
-            max-width: 700px; /* Default max width for larger screens */
-            width: 100%; /* Take full width on smaller screens */
+            max-width: 700px;
+            width: 100%;
             margin: auto;
             overflow: hidden;
             border-radius: 1rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            height: 400px; /* Fixed height for consistency, adjust as needed */
+            height: 400px;
         }
 
         .carousel-images {
@@ -223,8 +223,7 @@
 
         .carousel-images img,
         .carousel-images video {
-            flex: 0 0 100%; /* Each media item takes exactly 100% of the parent's width */
-            /* Removed width: 100% here as flex: 0 0 100% handles it */
+            flex: 0 0 100%;
             height: 100%;
             display: block;
             object-fit: cover;
@@ -268,7 +267,7 @@
 
         @media (max-width: 768px) {
             .carousel-container {
-                height: 300px; /* Smaller height for mobile */
+                height: 300px;
             }
             
             /* Show carousel buttons on mobile with better sizing */
@@ -443,7 +442,13 @@
                     <h3>Important Travel Information</h3>
                     <p>Essential details for customs, packing, and arrival logistics for your trip.</p>
                 </a>
-                <!-- Hidden Highlights -->
+                <!-- Highlight 5: FAQ Section -->
+                <a href="#faq" class="highlight-card-link">
+                    <img src="https://placehold.co/150x150/2d3748/fbd38d?text=FAQ" alt="FAQ Icon">
+                    <h3>Trip FAQs</h3>
+                    <p>Answers to your common questions about money, transportation, and more.</p>
+                </a>
+                <!-- Remaining Highlights (can be linked later if desired) -->
                 <div class="highlight-card-link hidden">
                     <img src="https://placehold.co/150x150/2d3748/fbd38d?text=Walled+City+Nights" alt="Walled City Nights">
                     <h3>Walled City Nightlife</h3>
@@ -597,77 +602,8 @@
         </div>
     </section>
 
-    <!-- Important Travel Information Section -->
-    <section id="travel-info" class="py-16 bg-gray-800 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 section-title">Important Travel Information</h2>
-            <div class="flex justify-center">
-                <div class="card p-6 max-w-2xl w-full text-left">
-                    <h3 class="text-xl font-semibold mb-4 text-fbd38d">Customs & Entry</h3>
-                    <p class="text-gray-400 mb-4">
-                        <strong>Pre-fill Your Check-Mig Form:</strong> All travelers entering or exiting Colombia must fill out the Check-Mig form online within 72 hours prior to their flight. This is mandatory and helps streamline your entry process.
-                    </p>
-                    <div class="text-center mb-6">
-                        <a href="https://apps.migracioncolombia.gov.co/pre-registro/en" 
-                           target="_blank" 
-                           class="btn-primary inline-block px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl">
-                            🛂 Complete Check-Mig Form
-                        </a>
-                        <p class="text-gray-500 text-sm mt-2">Fill this out before you depart!</p>
-                    </div>
-
-                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Stay Connected - Group Chat</h3>
-                    <p class="text-gray-400 mb-4">
-                        Join our dedicated WhatsApp group for real-time updates, coordination, and to stay connected with the crew throughout the trip!
-                    </p>
-                    <div class="text-center mb-6">
-                        <a href="https://chat.whatsapp.com/DuIxTjR50nPBEVl4phAopt?mode=ac_t" 
-                           target="_blank" 
-                           class="btn-primary inline-block px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl">
-                            💬 Join WhatsApp Group
-                        </a>
-                        <p class="text-gray-500 text-sm mt-2">Essential for trip coordination and updates</p>
-                    </div>
-                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Bring Two Bottles of Liquor</h3>
-                    <p class="text-gray-400 mb-4">
-                        <strong>We're asking everyone to bring two bottles of liquor:</strong> one for the yacht excursion and one for yourself. This ensures we're well-stocked for our private yacht day and you have your preferred spirits for the trip!
-                    </p>
-                    <p class="text-gray-400 mb-4">
-                        <strong>Duty-Free Recommendation:</strong> If you choose to buy duty-free liquor, we recommend purchasing at your American departure airport rather than in Cartagena. American duty-free shops typically have better selection and prices.
-                    </p>
-                    
-                    <div class="bg-gray-700 p-4 rounded-lg mb-4">
-                        <h4 class="text-fbd38d font-semibold mb-2">⏰ Critical Timing Information:</h4>
-                        <ul class="list-disc list-inside text-gray-300 space-y-1">
-                            <li>Purchase at least <strong>45 minutes before flight departure</strong></li>
-                            <li>Liquor is delivered directly to your gate when boarding</li>
-                            <li>Make this one of the <strong>first things you do after security</strong></li>
-                            <li><strong>Choose a duty-free shop close to your gate</strong> - shops far from your gate may refuse service due to delivery logistics</li>
-                            <li>Especially important if you have a connecting flight</li>
-                        </ul>
-                    </div>
-                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Arrivals & Transportation</h3>
-                    <p class="text-gray-400 mb-4">
-                        To help coordinate potential shuttle services from the airport to the villa, please post your flight arrival time and airline information in the <a href="https://chat.whatsapp.com/DuIxTjR50nPBEVl4phAopt?mode=ac_t" target="_blank" class="text-fbd38d hover:text-yellow-300 underline">WhatsApp group</a>. We'll do our best to group arrivals for smooth transfers.
-                    </p>
-                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Packing Essentials</h3>
-                    <ul class="list-disc list-inside text-gray-300 mb-6 space-y-2">
-                        <li><strong>Lightweight & Breathable Clothing:</strong> Cartagena is hot and humid! Pack linen, cotton, and other light fabrics.</li>
-                        <li><strong>Swimwear:</strong> For the villa pool, yacht, and beach clubs.</li>
-                        <li><strong>Sun Protection:</strong> Sunscreen (high SPF!), hats, sunglasses are crucial.</li>
-                        <li><strong>Comfortable Walking Shoes:</strong> For exploring the Walled City's cobblestone streets.</li>
-                        <li><strong>Dressy Casual Attire:</strong> For nightlife and nice dinners. Think stylish shorts/linen pants, collared shirts.</li>
-                        <li><strong>Bug Spray:</strong> Especially for evenings.</li>
-                        <li><strong>Portable Power Bank:</b> To keep your devices charged on the go.</li>
-                    </ul>    
-
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Activity Poll Section -->
-    <section id="activity-poll" class="py-16 bg-gray-900 text-center">
+    <section id="activity-poll" class="py-16 bg-gray-800 text-center">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold mb-12 section-title">Share Your Activity Preferences</h2>
             <div class="flex justify-center">
@@ -719,8 +655,104 @@
         </div>
     </section>
 
+    <!-- Important Travel Information Section -->
+    <section id="travel-info" class="py-16 bg-gray-800 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 section-title">Important Travel Information</h2>
+            <div class="flex justify-center">
+                <div class="card p-6 max-w-2xl w-full text-left">
+                    <h3 class="text-xl font-semibold mb-4 text-fbd38d">Customs & Entry</h3>
+                    <p class="text-gray-400 mb-4">
+                        <strong>Pre-fill Your Check-Mig Form:</strong> All travelers entering or exiting Colombia must fill out the Check-Mig form online within 72 hours prior to their flight. This is mandatory and helps streamline your entry process.
+                    </p>
+                    <div class="text-center mb-6">
+                        <a href="https://apps.migracioncolombia.gov.co/pre-registro/en" 
+                           target="_blank" 
+                           class="btn-primary inline-block px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl">
+                            🛂 Complete Check-Mig Form
+                        </a>
+                        <p class="text-gray-500 text-sm mt-2">Fill this out before you depart!</p>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Stay Connected - Group Chat</h3>
+                    <p class="text-gray-400 mb-4">
+                        Join our dedicated WhatsApp group for real-time updates, coordination, and to stay connected with the crew throughout the trip!
+                    </p>
+                    <div class="text-center mb-6">
+                        <a href="https://chat.whatsapp.com/DuIxTjR50nPBEVl4phAopt?mode=ac_t" 
+                           target="_blank" 
+                           class="btn-primary inline-block px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl">
+                            💬 Join WhatsApp Group
+                        </a>
+                        <p class="text-gray-500 text-sm mt-2">Essential for trip coordination and updates</p>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Bring Two Bottles of Liquor</h3>
+                    <p class="text-gray-400 mb-4">
+                        <strong>We're asking everyone to bring two bottles of liquor:</strong> one for the yacht excursion and one for yourself. This ensures we're well-stocked for our private yacht day and you have your preferred spirits for the trip!
+                    </p>
+                    <p class="text-gray-400 mb-4">
+                        <strong>Duty-Free Recommendation:</strong> If you choose to buy duty-free liquor, we recommend purchasing at your American departure airport rather than in Cartagena. American duty-free shops typically have better selection and prices.
+                    </p>
+                    
+                    <div class="bg-gray-700 p-4 rounded-lg mb-4">
+                        <h4 class="text-fbd38d font-semibold mb-2">⏰ Critical Timing Information:</h4>
+                        <ul class="list-disc list-inside text-gray-300 space-y-1">
+                            <li>Purchase at least <strong>45 minutes before flight departure</strong></li>
+                            <li>Liquor is delivered directly to your gate when boarding</li>
+                            <li>Make this one of the <strong>first things you do after security</strong></li>
+                            <li><strong>Choose a duty-free shop close to your gate</strong> - shops far from your gate may refuse service due to delivery logistics</li>
+                            <li>Especially important if you have a connecting flight</li>
+                        </ul>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Packing Essentials</h3>
+                    <ul class="list-disc list-inside text-gray-300 mb-6 space-y-2">
+                        <li><strong>Lightweight & Breathable Clothing:</strong> Cartagena is hot and humid! Pack linen, cotton, and other light fabrics.</li>
+                        <li><strong>Swimwear:</strong> For the villa pool, yacht, and beach clubs.</li>
+                        <li><strong>Sun Protection:</strong> Sunscreen (high SPF!), hats, sunglasses are crucial.</li>
+                        <li><strong>Comfortable Walking Shoes:</strong> For exploring the Walled City's cobblestone streets.</li>
+                        <li><strong>Dressy Casual Attire:</strong> For nightlife and nice dinners. Think stylish shorts/linen pants, collared shirts.</li>
+                        <li><strong>Bug Spray:</strong> Especially for evenings.</li>
+                        <li><strong>Portable Power Bank:</b> To keep your devices charged on the go.</li>
+                    </ul>    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-gray-900 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 section-title">Frequently Asked Questions</h2>
+            <div class="flex justify-center">
+                <div class="card p-6 max-w-2xl w-full text-left">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-fbd38d">Should I bring cash?</h3>
+                            <p class="text-gray-400 mt-2">
+                                Yes, you should bring at least **$500 in US Dollars** to cover various activities, tips, and small purchases.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-fbd38d">Should I use US dollars in Cartagena?</h3>
+                            <p class="text-gray-400 mt-2">
+                                No, it is highly recommended that you exchange your US Dollars for Colombian Pesos. **DO NOT** exchange your currency at the airport as you will receive a poor exchange rate. We have a concierge who can arrange for a currency exchange service to come to the villa and provide a much better rate. It's always best to exchange your currency locally.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-fbd38d">How will I be able to get around?</h3>
+                            <p class="text-gray-400 mt-2">
+                                In many cases, we will be traveling as a group, so a van will be available for transportation. For other trips, Uber and taxis are readily available and widely used. Uber may often be more cost-effective than taxi cabs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Gemini API Features Section -->
-    <section id="gemini-features" class="py-16 bg-gray-800 text-center">
+    <section id="gemini-features" class="py-16 bg-gray-900 text-center">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold mb-12 section-title">Cartagena Insights & Fun</h2>
 
@@ -878,12 +910,12 @@
                         });
 
                         let resultsHtml = '';
-                        resultsHtml += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">'; // Adjusted grid columns
+                        resultsHtml += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">';
                         let hasResults = false;
 
                         for (const categoryKey in activityCategories) {
                             const categoryFullName = activityCategories[categoryKey];
-                            const participants = Array.from(groupedResults[categoryKey]); // Convert Set to Array for display
+                            const participants = Array.from(groupedResults[categoryKey]);
 
                             resultsHtml += `
                                 <div class="p-4 bg-gray-800 rounded-lg shadow-inner">
@@ -913,7 +945,7 @@
                         pollResultsDisplay.innerHTML = `<p class="text-red-400 text-center py-4">Error loading poll results.</p>`;
                     });
                 }
-            }, 100); // Check every 100ms if Firebase is ready
+            }, 100);
         }
 
 
@@ -950,7 +982,7 @@
                     result.candidates[0].content && result.candidates[0].content.parts &&
                     result.candidates[0].content.parts.length > 0) {
                     const text = result.candidates[0].content.parts[0].text;
-                    outputElement.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`; // Display the response, preserve newlines
+                    outputElement.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`;
                     outputElement.classList.remove('hidden');
                 } else {
                     outputElement.innerHTML = `<p class="text-red-400">No content generated. Please try a different prompt.</p>`;
@@ -1007,17 +1039,17 @@
             pollSpinner.classList.remove('hidden');
             pollMessage.classList.add('hidden');
 
-                                if (!isFirebaseReady) {
-                        pollMessage.textContent = 'Poll submission requires Firebase configuration.';
-                        pollMessage.classList.remove('hidden');
-                        pollMessage.classList.remove('text-red-400');
-                        pollMessage.classList.add('text-yellow-400');
-                        
-                        document.getElementById('activityPollForm').reset();
-                        submitBtn.disabled = false;
-                        pollSpinner.classList.add('hidden');
-                        return;
-                    }
+            if (!isFirebaseReady) {
+                pollMessage.textContent = 'Poll submission requires a Firebase connection. Please refresh the page.';
+                pollMessage.classList.remove('hidden');
+                pollMessage.classList.remove('text-red-400');
+                pollMessage.classList.add('text-yellow-400');
+                
+                document.getElementById('activityPollForm').reset();
+                submitBtn.disabled = false;
+                pollSpinner.classList.add('hidden');
+                return;
+            }
 
             try {
                 if (!db || !auth.currentUser) {
@@ -1026,7 +1058,7 @@
 
                 const pollRef = collection(db, `artifacts/${appId}/public/data/bachelorPartyPoll`);
                 await addDoc(pollRef, {
-                    userId: userId, // Use the user ID from Firebase Auth
+                    userId: userId,
                     participantName: participantName,
                     selectedActivities: selectedActivities,
                     timestamp: serverTimestamp()
@@ -1037,9 +1069,7 @@
                 pollMessage.classList.remove('text-red-400');
                 pollMessage.classList.add('text-green-400');
 
-                // Optionally clear the form
                 document.getElementById('activityPollForm').reset();
-
             } catch (error) {
                 pollMessage.textContent = 'Error submitting poll. Please try again.';
                 pollMessage.classList.remove('hidden');
@@ -1095,92 +1125,58 @@
 
         // Carousel Logic for Yacht
         const yachtCarouselImagesContainer = document.getElementById('yachtCarouselImages');
-        // Select both img and video elements
         const yachtMedia = yachtCarouselImagesContainer ? yachtCarouselImagesContainer.querySelectorAll('img, video') : [];
         let currentYachtImageIndex = 0;
 
         function showYachtImage(index) {
-            const yachtImages = document.querySelectorAll('#yachtCarouselImages img, #yachtCarouselImages video');
-            if (yachtImages.length === 0) return;
-            
+            if (!yachtCarouselImagesContainer || yachtMedia.length === 0) return;
             yachtCarouselImagesContainer.style.transform = `translateX(${-index * 100}%)`;
         }
 
-        // Make moveSlide globally accessible
-        function moveSlide(direction) {
-            const yachtImages = document.querySelectorAll('#yachtCarouselImages img, #yachtCarouselImages video');
-            if (yachtImages.length === 0) return;
-            
+        window.moveSlide = function(direction) {
+            if (yachtMedia.length === 0) return;
             currentYachtImageIndex += direction;
-            if (currentYachtImageIndex >= yachtImages.length) {
+            if (currentYachtImageIndex >= yachtMedia.length) {
                 currentYachtImageIndex = 0;
             } else if (currentYachtImageIndex < 0) {
-                currentYachtImageIndex = yachtImages.length - 1;
+                currentYachtImageIndex = yachtMedia.length - 1;
             }
             showYachtImage(currentYachtImageIndex);
         }
-        window.moveSlide = moveSlide;
 
-        // Simple carousel initialization  
-        let carouselsInitialized = false;
-        
-        function initializeCarousels() {
-            if (carouselsInitialized) return; // Prevent double initialization
-            
-            // Initialize yacht carousel
-            const yachtImages = document.querySelectorAll('#yachtCarouselImages img, #yachtCarouselImages video');
-            if (yachtImages.length > 0) {
-                currentYachtImageIndex = 0;
-                showYachtImage(0);
-            }
-            
-            // Initialize villa carousel
-            const villaImages = document.querySelectorAll('#villaCarouselImages img, #villaCarouselImages video');
-            if (villaImages.length > 0) {
-                currentVillaImageIndex = 0;
-                showVillaImage(0);
-            }
-            
-            carouselsInitialized = true;
-        }
-
-        // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(initializeCarousels, 250);
-        });
-
-        // Also initialize on window load as backup
         window.addEventListener('load', () => {
-            setTimeout(initializeCarousels, 100);
+            if (yachtMedia.length > 0) {
+                showYachtImage(currentYachtImageIndex);
+            }
         });
-
+        
         // Villa Carousel Logic
         const villaCarouselImagesContainer = document.getElementById('villaCarouselImages');
-        // Select both img and video elements for villa
-        const villaMedia = villaCarouselImagesContainer ? villaCarouselImagesContainer.querySelectorAll('img, video') : [];
+        const villaMedia = villaCarouselImagesContainer ? villaCarouselImagesContainer.querySelectorAll('img') : [];
         let currentVillaImageIndex = 0;
 
         function showVillaImage(index) {
-            const villaImages = document.querySelectorAll('#villaCarouselImages img, #villaCarouselImages video');
-            if (villaImages.length === 0) return;
-            
+            if (!villaCarouselImagesContainer || villaMedia.length === 0) return;
             villaCarouselImagesContainer.style.transform = `translateX(${-index * 100}%)`;
         }
 
-        // Make moveVillaSlide globally accessible
-        function moveVillaSlide(direction) {
-            const villaImages = document.querySelectorAll('#villaCarouselImages img, #villaCarouselImages video');
-            if (villaImages.length === 0) return;
-            
+        window.moveVillaSlide = function(direction) {
+            if (villaMedia.length === 0) return;
             currentVillaImageIndex += direction;
-            if (currentVillaImageIndex >= villaImages.length) {
+            if (currentVillaImageIndex >= villaMedia.length) {
                 currentVillaImageIndex = 0;
             } else if (currentVillaImageIndex < 0) {
-                currentVillaImageIndex = villaImages.length - 1;
+                currentVillaImageIndex = villaMedia.length - 1;
             }
             showVillaImage(currentVillaImageIndex);
         }
-        window.moveVillaSlide = moveVillaSlide;
+
+        window.addEventListener('load', () => {
+            if (villaMedia.length > 0) {
+                showVillaImage(currentVillaImageIndex);
+            }
+        });
+
 
         // Touch/Swipe functionality for carousels
         function addSwipeSupport(carouselContainer, moveFunction) {
@@ -1208,7 +1204,7 @@
             }
             
             carouselContainer.addEventListener('touchstart', function(e) {
-                if (e.touches.length !== 1) return; // Only handle single touch
+                if (e.touches.length !== 1) return;
                 
                 resetTouchData();
                 const touchObj = e.touches[0];
@@ -1224,12 +1220,10 @@
                 touchData.distX = touchObj.clientX - touchData.startX;
                 touchData.distY = touchObj.clientY - touchData.startY;
                 
-                // Determine scroll direction on first significant movement
                 if (!touchData.isScrolling && (Math.abs(touchData.distX) > 5 || Math.abs(touchData.distY) > 5)) {
                     touchData.isScrolling = Math.abs(touchData.distY) > Math.abs(touchData.distX);
                 }
                 
-                // Prevent default only for horizontal swipes
                 if (!touchData.isScrolling && Math.abs(touchData.distX) > 10) {
                     e.preventDefault();
                 }
@@ -1238,15 +1232,14 @@
             carouselContainer.addEventListener('touchend', function(e) {
                 if (!touchData.isTouching) return;
                 
-                // Only process horizontal swipes
                 if (!touchData.isScrolling && 
                     Math.abs(touchData.distX) >= threshold && 
                     Math.abs(touchData.distY) <= restraint) {
                     
                     if (touchData.distX > 0) {
-                        moveFunction(-1); // Swipe right - previous
+                        moveFunction(-1);
                     } else {
-                        moveFunction(1);  // Swipe left - next
+                        moveFunction(1);
                     }
                 }
                 
@@ -1269,7 +1262,7 @@
 
         // Show/hide button based on scroll position
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) { // Show after scrolling 300px
+            if (window.pageYOffset > 300) {
                 backToTopButton.classList.add('show');
             } else {
                 backToTopButton.classList.remove('show');
@@ -1286,4 +1279,3 @@
     </script>
 </body>
 </html>
-
