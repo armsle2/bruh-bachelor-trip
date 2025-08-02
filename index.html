@@ -353,6 +353,18 @@
                 font-size: 1.3rem;
             }
         }
+
+        /* Force consistent font rendering across all sections */
+        .consistent-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !important;
+            font-weight: 400 !important;
+            font-style: normal !important;
+            font-stretch: normal !important;
+            font-variant: normal !important;
+            text-rendering: optimizeLegibility !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -475,7 +487,7 @@
             <div class="flex justify-center">
                 <div class="card p-6 max-w-2xl w-full text-left">
                     <h3 class="text-xl font-semibold mb-4 text-center">Our Private Villa</h3>
-                    <p class="text-gray-400 mb-6 text-center">
+                    <p class="text-gray-400 mb-6 text-center consistent-text">
                         Get ready to unwind in style! We've secured an incredible 12-bedroom villa, perfect for our group.
                         Check out the listing details below:
                     </p>
@@ -548,10 +560,10 @@
                     </ul>
 
                     <h4 class="text-lg font-semibold mb-2 text-fbd38d">Directions to the Villa:</h4>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-400 mb-4 consistent-text">
                         <strong>Address:</strong> Calle 5A cr 6-119, Cartagena, Bolívar, Colombia
                     </p>
-                    <p class="text-gray-400 mb-6">
+                    <p class="text-gray-400 mb-6 consistent-text">
                         <strong>Uber/Taxi Instructions:</strong> Tell your driver to take you to "Calle Pinango cerca de Medi Help en Castillogrande."
                     </p>
                 </div>
@@ -566,7 +578,7 @@
             <div class="flex justify-center">
                 <div class="card p-6 max-w-2xl w-full text-left">
                     <h3 class="text-xl font-semibold mb-4 text-center">Set Sail in Style!</h3>
-                    <p class="text-gray-400 mb-6 text-center">
+                    <p class="text-gray-400 mb-6 text-center consistent-text">
                         Get ready for an incredible day on the water aboard our private yacht.
                         Here are the details for your luxurious excursion:
                     </p>
@@ -609,7 +621,7 @@
             <div class="flex justify-center">
                 <div class="card p-6 max-w-2xl w-full text-left">
                     <h3 class="text-xl font-semibold mb-4 text-center text-fbd38d">Poll: Your Activity Preferences!</h3>
-                    <p class="text-gray-400 mb-6 text-center">
+                    <p class="text-gray-400 mb-6 text-center consistent-text">
                         Help us tailor the experience! Please select the types of activities you're most interested in for the trip.
                     </p>
                     <form id="activityPollForm" class="text-left">
@@ -662,7 +674,7 @@
             <div class="flex justify-center">
                 <div class="card p-6 max-w-2xl w-full text-left">
                     <h3 class="text-xl font-semibold mb-4 text-fbd38d">Customs & Entry</h3>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-400 mb-4 consistent-text">
                         <strong>Pre-fill Your Check-Mig Form:</strong> All travelers entering or exiting Colombia must fill out the Check-Mig form online within 72 hours prior to their flight. This is mandatory and helps streamline your entry process.
                     </p>
                     <div class="text-center mb-6">
@@ -675,7 +687,7 @@
                     </div>
 
                     <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Stay Connected - Group Chat</h3>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-400 mb-4 consistent-text">
                         Join our dedicated WhatsApp group for real-time updates, coordination, and to stay connected with the crew throughout the trip!
                     </p>
                     <div class="text-center mb-6">
@@ -687,10 +699,10 @@
                         <p class="text-gray-500 text-sm mt-2">Essential for trip coordination and updates</p>
                     </div>
                     <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Bring Two Bottles of Liquor</h3>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-400 mb-4 consistent-text">
                         <strong>We're asking everyone to bring two bottles of liquor:</strong> one for the yacht excursion and one for yourself. This ensures we're well-stocked for our private yacht day and you have your preferred spirits for the trip!
                     </p>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-400 mb-4 consistent-text">
                         <strong>Duty-Free Recommendation:</strong> If you choose to buy duty-free liquor, we recommend purchasing at your American departure airport rather than in Cartagena. American duty-free shops typically have better selection and prices.
                     </p>
                     
@@ -721,31 +733,25 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-16 bg-gray-900 text-center">
+    <section id="faq" class="py-16 bg-gray-800 text-center">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold mb-12 section-title">Frequently Asked Questions</h2>
             <div class="flex justify-center">
                 <div class="card p-6 max-w-2xl w-full text-left">
-                    <div class="space-y-6">
-                        <div>
-                            <h3 class="text-xl font-semibold text-fbd38d">Should I bring cash?</h3>
-                            <p class="text-gray-400 mt-2">
-                                Yes, you should bring at least **$500 in US Dollars** to cover various activities, tips, and small purchases.
-                            </p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-fbd38d">Should I use US dollars in Cartagena?</h3>
-                            <p class="text-gray-400 mt-2">
-                                No, it is highly recommended that you exchange your US Dollars for Colombian Pesos. **DO NOT** exchange your currency at the airport as you will receive a poor exchange rate. We have a concierge who can arrange for a currency exchange service to come to the villa and provide a much better rate. It's always best to exchange your currency locally.
-                            </p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-fbd38d">How will I be able to get around?</h3>
-                            <p class="text-gray-400 mt-2">
-                                In many cases, we will be traveling as a group, so a van will be available for transportation. For other trips, Uber and taxis are readily available and widely used. Uber may often be more cost-effective than taxi cabs.
-                            </p>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-fbd38d">Should I bring cash?</h3>
+                    <p class="text-gray-400 mb-4 consistent-text">
+                        Yes, you should bring at least <strong>$500 in US Dollars</strong> to cover various activities, tips, and small purchases.
+                    </p>
+
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">Should I use US dollars in Cartagena?</h3>
+                    <p class="text-gray-400 mb-4 consistent-text">
+                        No, it is highly recommended that you exchange your US Dollars for Colombian Pesos. <strong>DO NOT</strong> exchange your currency at the airport as you will receive a poor exchange rate. We have a concierge who can arrange for a currency exchange service to come to the villa and provide a much better rate. It's always best to exchange your currency locally.
+                    </p>
+
+                    <h3 class="text-xl font-semibold mt-8 mb-4 text-fbd38d">How will I be able to get around?</h3>
+                    <p class="text-gray-400 mb-4 consistent-text">
+                        In many cases, we will be traveling as a group, so a van will be available for transportation. For other trips, Uber and taxis are readily available and widely used. Uber may often be more cost-effective than taxi cabs.
+                    </p>
                 </div>
             </div>
         </div>
@@ -760,7 +766,7 @@
                 <!-- Personalized Itinerary Suggestion - HIDDEN -->
                 <div class="card p-8 flex flex-col items-center text-center hidden">
                     <h3 class="text-2xl font-semibold mb-4">✨ Personalized Itinerary Suggestion</h3>
-                    <p class="text-gray-400 mb-4">Tell us your preferred vibe for Cartagena, and we'll suggest some activities!</p>
+                    <p class="text-gray-400 mb-4 consistent-text">Tell us your preferred vibe for Cartagena, and we'll suggest some activities!</p>
                     <input type="text" id="itineraryInput" placeholder="e.g., adventure, nightlife, relaxation, foodie" class="w-full p-3 mb-4 rounded-md bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:border-fbd38d">
                     <button id="generateItineraryBtn" class="btn-primary px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl flex items-center justify-center">
                         Generate Suggestions
@@ -774,7 +780,7 @@
                 <!-- Cartagena Slang & Phrases -->
                 <div class="card p-8 flex flex-col items-center text-center">
                     <h3 class="text-2xl font-semibold mb-4">✨ Cartagena Slang & Phrases</h3>
-                    <p class="text-gray-400 mb-4">Learn some cool local phrases to impress the locals!</p>
+                    <p class="text-gray-400 mb-4 consistent-text">Learn some cool local phrases to impress the locals!</p>
                     <button id="generateSlangBtn" class="btn-primary px-6 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl flex items-center justify-center">
                         Get Phrases
                         <span id="slangSpinner" class="loading-spinner hidden"></span>
