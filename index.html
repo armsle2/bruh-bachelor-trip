@@ -365,9 +365,188 @@
             -webkit-font-smoothing: antialiased !important;
             -moz-osx-font-smoothing: grayscale !important;
         }
+
+        /* Sticky Navigation Menu */
+        #nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 32, 44, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(251, 211, 141, 0.2);
+            z-index: 999;
+            padding: 0.75rem 1rem;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #nav-menu.show {
+            transform: translateY(0);
+        }
+
+        #nav-menu .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        #nav-menu .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fbd38d;
+            text-decoration: none;
+        }
+
+        #nav-menu .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #nav-menu .nav-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        #nav-menu .nav-link:hover {
+            color: #fbd38d;
+            background-color: rgba(251, 211, 141, 0.1);
+            border-color: rgba(251, 211, 141, 0.3);
+            transform: translateY(-1px);
+        }
+
+        #nav-menu .nav-toggle {
+            display: none;
+            background: none;
+            border: 2px solid #fbd38d;
+            color: #fbd38d;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #nav-menu .nav-toggle:hover {
+            background-color: rgba(251, 211, 141, 0.1);
+        }
+
+        /* Hamburger Menu Button */
+        #menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(45, 55, 72, 0.9);
+            color: #fbd38d;
+            border: 2px solid #fbd38d;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: 400;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        #menu-toggle:hover {
+            background-color: #fbd38d;
+            color: #1a202c;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.3);
+        }
+
+        #menu-toggle:active {
+            transform: translateY(0) scale(0.95);
+        }
+
+        /* Adjust countdown timer for menu button */
+        #countdown-timer {
+            top: 20px;
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            #nav-menu .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+
+            #nav-menu .nav-links.show {
+                display: flex;
+            }
+
+            #nav-menu .nav-toggle {
+                display: block;
+            }
+
+            #nav-menu .nav-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #menu-toggle {
+                top: 10px;
+                left: 10px;
+                padding: 0.5rem;
+                font-size: 1.3rem;
+                width: 45px;
+                height: 45px;
+            }
+
+            #countdown-timer {
+                top: 10px;
+                right: 10px;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
+
+    <!-- Hamburger Menu Button -->
+    <button id="menu-toggle" title="Navigation Menu">
+        ☰
+    </button>
+
+    <!-- Navigation Menu -->
+    <nav id="nav-menu">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">Cartagena Bachelor Bash</a>
+            <button class="nav-toggle" onclick="toggleMobileMenu()">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="#itinerary-highlights" class="nav-link">🎯 Highlights</a>
+                <a href="#accommodation" class="nav-link">🏖️ Villa</a>
+                <a href="#yacht-excursion" class="nav-link">⛵ Yacht</a>
+                <a href="#activity-poll" class="nav-link">🎪 Activities</a>
+                <a href="#travel-info" class="nav-link">✈️ Travel Info</a>
+                <a href="#faq" class="nav-link">❓ FAQ</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Countdown Timer -->
     <div id="countdown-timer">
@@ -1281,6 +1460,75 @@
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+
+        // Navigation Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Toggle menu visibility
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Mobile menu toggle
+        window.toggleMobileMenu = function() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('show');
+        };
+
+        // Smooth scroll for navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    document.getElementById('nav-links').classList.remove('show');
+                    
+                    // Close main menu
+                    navMenu.classList.remove('show');
+                    
+                    // Smooth scroll to target
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenu.classList.remove('show');
+                document.getElementById('nav-links').classList.remove('show');
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                navMenu.classList.remove('show');
+                document.getElementById('nav-links').classList.remove('show');
+            }
+        });
+
+        // Auto-hide menu on scroll (optional enhancement)
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Hide menu when scrolling down, show when scrolling up
+            if (currentScroll > lastScrollTop && currentScroll > 100) {
+                // Scrolling down
+                navMenu.classList.remove('show');
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
     </script>
 </body>
